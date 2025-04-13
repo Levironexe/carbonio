@@ -30,7 +30,7 @@ const ContactForm = () => {
             </h1>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-black">
               Tell us about your business and your sustainability goals.
-              <br /> We&apos;re excited to learn how you're tackling carbon impact and how our technology can support your journey toward transparency and accountability.
+              <br /> We&apos;re excited to learn how you&apos;re tackling carbon impact and how our technology can support your journey toward transparency and accountability.
             </p>
           </div>
 

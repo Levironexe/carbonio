@@ -57,7 +57,7 @@ const MeetCarbonioSection = () => {
                   <div>
                     <h3 className='font-bold text-xl sm:text-[20px] mb-2 sm:mb-3 md:mb-4 px-3 sm:px-4 md:px-6'>Trustless, Not Trust-Based</h3>
                     <p className='text-base sm:text-lg md:text-xl lg:text-[20px] px-3 sm:px-4 md:px-6'>
-                      Designed for high-volume supply chains with Solana's speed and cost-efficiency — ready for real-world adoption.
+                      Designed for high-volume supply chains with Solana&apos;s speed and cost-efficiency — ready for real-world adoption.
                     </p>
                   </div>
                   <Image
