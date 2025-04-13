@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeroSection, MeetCarbonioSection, OurCompany, PoweredBySolana, MeetOurSpecialists, EarthChallenge } from './components/index'
+import { HeroSection, MeetCarbonioSection, OurCompany, MeetOurSpecialists, EarthChallenge } from './components/index'
 
 const page = () => {
   return (

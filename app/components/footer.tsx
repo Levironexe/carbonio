@@ -1,4 +1,4 @@
-import { Facebook, Github, Instagram, Twitter } from 'lucide-react'
+import { Facebook, Instagram, Twitter } from 'lucide-react'
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -31,21 +31,21 @@ const Footer = () => {
             <div className='flex-[1] flex flex-col items-end justify-end gap-12  py-4 sm:py-6 md:py-8 lg:py-12'>
                     <div className='flex gap-8'>
                         <a 
-                          href="https://www.instagram.com/carbonio" 
+                          href="https://www.instagram.com/levironhere/" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="hover:scale-125 transition-all duration-200 text-purple-800">
                           <Instagram size={24} />
                         </a>
                         <a 
-                          href="https://twitter.com/carbonio" 
+                          href="https://twitter.com/your_mom" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="hover:scale-125 transition-all duration-200 text-purple-800">
                           <Twitter size={24} />
                         </a>
                         <a 
-                          href="https://facebook.com/carbonio" 
+                          href="https://www.facebook.com/bao.nam.703289" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="hover:scale-125 transition-all duration-200 text-purple-800">
