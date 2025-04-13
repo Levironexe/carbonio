@@ -93,7 +93,7 @@ const fadeIn = {
         <div className="relative max-w-6xl mx-auto">
           <div className="mb-3 sm:mb-4 md:mb-6">
             <p className="text-black text-[20px] sm:text-3xl md:text-4xl lg:text-5xl  font-bold">
-              An Earth's Threat - <span className="text-purple-700">Carbon Dioxide</span>
+              An Earth&apos;s Threat - <span className="text-purple-700">Carbon Dioxide</span>
             </p>
           </div>
           
@@ -136,10 +136,10 @@ const fadeIn = {
               variants={fadeIn}
               transition={{ duration: 0.7 }}
             >
-              <p><span className="text-purple-700 font-bold">Carbon emissions</span> present one of today's <span className="font-bold">most critical environmental challenges</span>. 
+              <p><span className="text-purple-700 font-bold">Carbon emissions</span> present one of today&apos;s <span className="font-bold">most critical environmental challenges</span>. 
                 These industrial activities contribute significantly to climate change, releasing greenhouse gases that trap heat in our atmosphere. 
                 As we confront this reality, understanding these emission sources becomes crucial for developing 
-                effective policies and technologies that can help transition toward a more sustainable future while meeting growing global energy demands...</p>
+                effective policies and technologies that can help transition toward a more sustainable future while meeting growing global energy demands... </p>
             </motion.div>
           </motion.div>
         </div>
