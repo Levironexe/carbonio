@@ -8,7 +8,8 @@ import Footer from './footer'
 import ContactForm from './contact-form'
 import MeetOurSpecialists from './meet-out-specialists'
 import { EarthChallenge } from './earth-challenge'
-
+import CompanySummary from './company-summary'
+import CompanyList from './company-list'
 export {
     NavBar,
     HeroSection,
@@ -19,5 +20,7 @@ export {
     Footer,
     ContactForm,
     MeetOurSpecialists,
-    EarthChallenge
+    EarthChallenge,
+    CompanySummary,
+    CompanyList
 }

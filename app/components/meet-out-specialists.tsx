@@ -12,8 +12,8 @@ const MeetOurSpecialists = () => {
               <div className='flex-[1]'>
                 <Image
                   src="/images/phat_portrait.jpg"
-                  width={250}
-                  height={250}
+                  width={300}
+                  height={300}
                   alt="Phat - a Solana Blockchain export."
                 />
               </div>

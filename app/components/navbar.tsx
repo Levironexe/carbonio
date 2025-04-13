@@ -19,15 +19,15 @@ const Navbar = () => {
 
   return (
     <div className={`w-full p-2 sm:p-4  md:sticky md:z-40  ${isScrolled ? "-top-50" : "top-0"} transition-all duration-200`}>
-      <div className='mx-auto bg-white border-black border-[3px] max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-2 rounded-[4px]'>
-        <div className='text-purple-700 w-auto text-xl sm:text-[20px] font-bold p-3 sm:p-4'>
+      <div className='mx-auto bg-white border-black border-2 max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-2 rounded-[4px]'>
+        <div className='text-purple-700 w-auto text-xl sm:text-[20px] font-bold px-2 sm:px-3'>
           <Link href="/">
             carbonio
           </Link>
         </div>
-        <div className='w-full sm:w-fit text-white text-base sm:text-lg md:text-xl flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center sm:justify-end bg-purple-700 p-3 sm:p-4'>
-          <Link className='hover:text-black transition-all duration-200' href="/">Company Dashboard</Link>
-          <Link className='hover:text-black transition-all duration-200' href="/">About us</Link>
+        <div className='w-full sm:w-fit text-white text-base sm:text-lg md:text-xl flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center sm:justify-end bg-purple-700 px-2 sm:px-3 py-1'>
+          <Link className='hover:text-black transition-all duration-200' href="/company-dashboard">Company dashboard</Link>
+          <Link className='hover:text-black transition-all duration-200' href="/about-us">About us</Link>
           <Link className='hover:text-black transition-all duration-200' href="/collaboration">Collaboration</Link>
         </div>
       </div>
