@@ -21,12 +21,12 @@ const MeetOurSpecialists = () => {
                 <div className="">
                   <Quote className="w-24 h-24 text-purple-700"/>
                 </div>
-                <p className='text-justify mb-8'>The biggest challenge in carbon reduction isn't measurement—it's trust. 
+                <p className='text-justify mb-8'>The biggest challenge in carbon reduction isn&apos;t measurement—it&apos;s trust. 
                   When emissions data passes through multiple hands in a supply chain, its integrity diminishes at each transfer. 
-                  With Solana's high-throughput blockchain, we've finally solved this 'trust bottleneck.' 
-                  Now a product's carbon story can be verified by anyone, anywhere, with cryptographic certainty. 
+                  With Solana&apos;s high-throughput blockchain, we&apos;ve finally solved this &apos;trust bottleneck&apos;.
+                  Now a product&apos;s carbon story can be verified by anyone, anywhere, with cryptographic certainty. 
                   What used to take months of manual auditing becomes instant, transparent, and tamper-proof. 
-                  This isn't just about better reporting—it's about creating a market that can finally reward genuine sustainability.</p>
+                  This isn&apos;t just about better reporting—it&apos;s about creating a market that can finally reward genuine sustainability.</p>
                   <p className='text-right'><span className='font-bold'>Phat Veo</span> - a Solana Blockchain expert</p>
               </div>
             </div>

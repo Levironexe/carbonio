@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Oxanium, Raleway } from "next/font/google";
+import { Oxanium } from "next/font/google";
 import "./globals.css";
 import {NavBar, Footer} from './components/index'
 
