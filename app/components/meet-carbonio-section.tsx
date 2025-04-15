@@ -84,7 +84,7 @@ const MeetCarbonioSection = () => {
               </div>
               <Link 
                 href="#specialists" 
-                className='bg-purple-800 hover:bg-purple-700 rounded-[4px] h-full p-3 sm:p-4 text-white shadow-purple-800  hover:shadow-md flex justify-between items-center text-base sm:text-lg md:text-xl lg:text-[18px] hover:pr-4 sm:hover:pr-5 md:hover:pr-6 transition-all duration-200'
+                className='bg-purple-800 hover:bg-purple-700 rounded-[4px] h-full p-3 sm:p-4 text-white shadow-purple-800 shadow-lg flex justify-between items-center text-base sm:text-lg md:text-xl lg:text-[18px] hover:pr-4 sm:hover:pr-5 md:hover:pr-6 transition-all duration-200'
               >
                 <p>Meet our specialist</p>
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"/>
