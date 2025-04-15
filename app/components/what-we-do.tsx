@@ -35,13 +35,13 @@ const WhatWeDo = () => {
                         />
                     </div>
                     <div className='flex-[3] mb-4 text-left'>
-                        <h2 className='text-[18px] sm:text-3xl md:text-4xl lg:text-4xl font-bold  pb-4'>The <span className='text-pink-700'>problem we&apos;re solving</span></h2>
+                        <h2 className='text-[18px] sm:text-3xl md:text-4xl lg:text-4xl font-bold  pb-4'>The <span className='text-purple-700'>problem</span> we&apos;re solving</h2>
                         <p className='text-base sm:text-lg md:text-xl lg:text-[18px] text-justify'>Today&apos;s carbon tracking systems are fragmented, opaque, and often inaccurate. Scope 3 emissions—those embedded in supply chains—represent up to 80% of many companies' carbon footprints, yet they remain the most difficult to measure and verify. As regulations tighten and consumers demand greater transparency, businesses need better solutions.</p>
                     </div>
                 </div>
                 <div className='flex justify-between items-center w-full border-b-2 border-b-carbon gap-12'>
                     <div className='flex-[3] mb-4'>
-                        <h2 className='text-[18px] sm:text-3xl md:text-4xl lg:text-4xl font-bold  pb-4'>Our Solution</h2>
+                        <h2 className='text-[18px] sm:text-3xl md:text-4xl lg:text-4xl font-bold  pb-4'>Our <span className='text-purple-700'>solution</span></h2>
                         <p className='text-base sm:text-lg md:text-xl lg:text-[18px]mb-2 '>CarbonChain ID leverages Solana&apos;s high-performance blockchain technology to create digital carbon identities for products. Our platform enables:</p>
                         <div className=''>
                             <div className='flex gap-3 items-center mb-1'>
