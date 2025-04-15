@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeroSection, MeetCarbonioSection, OurCompany, MeetOurSpecialists, EarthChallenge } from './components/index'
+import { HeroSection, MeetCarbonioSection, OurCompany, MeetOurSpecialists, EarthChallenge, ChosenByTheBest, PoweredBySolana } from './components/index'
 
 const page = () => {
   return (
@@ -7,8 +7,9 @@ const page = () => {
       <HeroSection/>
       <EarthChallenge/>
       <MeetCarbonioSection/>
+      <PoweredBySolana/>
+      <ChosenByTheBest/>
       <OurCompany/>
-      {/* <PoweredBySolana/> */}
       <MeetOurSpecialists/>
     </div>
   )

@@ -9,11 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "'": "file:supabase/supabase-js@2'",
+    "@supabase/supabase-js": "^2.49.4",
+    "clsx": "^2.1.1",
     "framer-motion": "^12.6.5",
     "lucide-react": "^0.487.0",
+    "motion": "^12.6.5",
     "next": "15.3.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "supabase": "^2.20.12",
+    "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

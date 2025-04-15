@@ -92,7 +92,7 @@ const fadeIn = {
       <div className="w-full px-4 sm:px-6 md:px-10">
         <div className="relative max-w-6xl mx-auto">
           <div className="mb-3 sm:mb-4 md:mb-6">
-            <p className="text-black text-[20px] sm:text-3xl md:text-4xl lg:text-5xl  font-bold">
+            <p className="text-black text-[18px] sm:text-3xl md:text-4xl lg:text-4xl  font-bold">
               An Earth&apos;s Threat - <span className="text-purple-700">Carbon Dioxide</span>
             </p>
           </div>
@@ -101,7 +101,7 @@ const fadeIn = {
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6"
             initial="hidden"
             whileInView="reveal"
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ staggerChildren: 0.3 }}  // This creates the delay between each child
           >
             {galleryImages.map((image) => (
@@ -132,7 +132,7 @@ const fadeIn = {
             ))}
             
             <motion.div 
-              className="text-black text-base sm:text-lg md:text-xl lg:text-[20px] col-span-1 sm:col-span-2 row-span-1 text-right"
+              className="text-black text-base sm:text-lg md:text-xl lg:text-[18px] col-span-1 sm:col-span-2 row-span-1 text-right"
               variants={fadeIn}
               transition={{ duration: 0.7 }}
             >

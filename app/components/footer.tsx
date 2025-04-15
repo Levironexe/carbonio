@@ -21,11 +21,11 @@ const Footer = () => {
            
             <div className='flex-[1] flex flex-col justify-between gap-12  py-4 sm:py-6 md:py-8 lg:py-12'>
                     <div >
-                        <h2 className='text-4xl sm:text-5xl md:text-6xl text-purple-700 font-bold '>carbonio</h2>
-                        <p className='text-base sm:text-lg md:text-xl lg:text-[20px] w-full md:w-4/5'>Transforming Carbon Footprint Auditing with the Power of Solana Blockchain Technology.</p>    
+                        <h2 className='text-4xl sm:text-4xl md:text-6xl text-purple-700 font-bold '>carbonio</h2>
+                        <p className='text-base sm:text-lg md:text-xl lg:text-[18px] w-full md:w-4/5'>Transforming Carbon Footprint Auditing with the Power of Solana Blockchain Technology.</p>    
                         
                     </div>
-                    <p className='text-sm sm:text-base md:text-lg lg:text-[20px]'>© 2025 carbonio. All rights reserved.</p>
+                    <p className='text-sm sm:text-base md:text-lg lg:text-[18px]'>© 2025 carbonio. All rights reserved.</p>
 
                 </div>
             <div className='flex-[1] flex flex-col items-end justify-end gap-12  py-4 sm:py-6 md:py-8 lg:py-12'>
@@ -52,17 +52,17 @@ const Footer = () => {
                           <Facebook size={24} />
                         </a>
                     </div>
-                    <div className='flex gap-8 text-[20px]'>
+                    <div className='flex gap-8 text-[18px]'>
                         <div className='group relative transition-all duration-300'>
                             <div className="absolute inset-0 bg-carbon transition-all duration-300 group-hover:-bottom-2 group-hover:-right-2 rounded-[4px]"></div>
                             <Link className='relative' href='/cookies-policy'>                      
-                            <p className='p-4 shadow z-10 bg-white border-carbon border-2'>Cookies Policy</p>
+                            <p className='p-4 shadow z-10 bg-white border-carbon border-2 rounded'>Cookies Policy</p>
                             </Link>
                         </div>
                         <div className='group relative transition-all duration-300'>
                             <div className="absolute inset-0 bg-carbon transition-all duration-300 group-hover:-bottom-2 group-hover:-right-2 rounded-[4px]"></div>
                             <Link className='relative' href='/privacy-policy'>                      
-                            <p className='p-4 shadow z-10 bg-white border-carbon border-2'>Privacy Policy</p>
+                            <p className='p-4 shadow z-10 bg-white border-carbon border-2 rounded'>Privacy Policy</p>
                             </Link>
                         </div>
                        
