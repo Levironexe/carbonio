@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import Image from 'next/image';
+// import Image from 'next/image';
 import { createClient } from '@supabase/supabase-js';
 import Link from 'next/link';
 

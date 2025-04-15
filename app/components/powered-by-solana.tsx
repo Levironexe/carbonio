@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 
 const PoweredBySolana = () => {
@@ -23,7 +23,7 @@ const PoweredBySolana = () => {
       <div className='mb-16'>
         <h2 className='text-3xl sm:text-4xl font-bold text-center mb-6'>Powered by <span className='text-purple-700'>Solana Blockchain</span></h2>
         <p className='text-lg sm:text-lg text-center w-full max-w-2xl mx-auto'>
-          Track and verify carbon emissions across the supply chain with real-time, tamper-proof data secured by Solana's high-performance blockchain.
+          Track and verify carbon emissions across the supply chain with real-time, tamper-proof data secured by Solana&apos;s high-performance blockchain.
         </p>
       </div>
       

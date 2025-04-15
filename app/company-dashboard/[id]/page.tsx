@@ -1,24 +1,24 @@
 import React from 'react'
-import { useParams } from 'next/navigation'
+// import { useParams } from 'next/navigation'
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-        auth: {
-            persistSession: false,
-            autoRefreshToken: false,
-            detectSessionInUrl: false
-        },
-        global: {
-            headers: {
-            'apikey': process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-            'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!}`
-            }
-        }
-    }
-)
+// const supabase = createClient(
+//     process.env.NEXT_PUBLIC_SUPABASE_URL!,
+//     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+//     {
+//         auth: {
+//             persistSession: false,
+//             autoRefreshToken: false,
+//             detectSessionInUrl: false
+//         },
+//         global: {
+//             headers: {
+//             'apikey': process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+//             'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!}`
+//             }
+//         }
+//     }
+// )
 
 // Main company interface to match companies table
 export interface Company {

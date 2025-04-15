@@ -19,7 +19,7 @@ interface SlideProps {
   handleSlideClick: (index: number) => void;
 }
 
-const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
+const Slide = ({ slide, index, current }: SlideProps) => {
   const slideRef = useRef<HTMLLIElement>(null);
   const isActive = current === index;
   
@@ -52,23 +52,25 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
     };
   }, [isActive]);
 
-  const handleMouseMove = (event: React.MouseEvent) => {
-    if (!isActive) return;
+  // const handleMouseMove = (event: React.MouseEvent) => {
+  //   if (!isActive) return;
     
-    const el = slideRef.current;
-    if (!el) return;
+  //   const el = slideRef.current;
+  //   if (!el) return;
 
-    const r = el.getBoundingClientRect();
-    xRef.current = event.clientX - (r.left + Math.floor(r.width / 2));
-    yRef.current = event.clientY - (r.top + Math.floor(r.height / 2));
-  };
+  //   const r = el.getBoundingClientRect();
+  //   xRef.current = event.clientX - (r.left + Math.floor(r.width / 2));
+  //   yRef.current = event.clientY - (r.top + Math.floor(r.height / 2));
+  // };
 
-  const handleMouseLeave = () => {
-    xRef.current = 0;
-    yRef.current = 0;
-  };
+  // const handleMouseLeave = () => {
+  //   xRef.current = 0;
+  //   yRef.current = 0;
+  // };
 
-  const { src, title, button, author, role } = slide;
+  
+  //button
+  const { src, title, author, role } = slide;
 
   return (
     <li
