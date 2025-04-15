@@ -11,6 +11,9 @@ import { EarthChallenge } from './earth-challenge'
 import CompanySummary from './company-summary'
 import CompanyList from './company-list'
 import ChosenByTheBest from './chosen-by-the-best'
+import AboutUsPage from './about-us'
+import WhatWeDo from './what-we-do'
+import OurTeam from './our-team'
 
 export {
     NavBar,
@@ -25,5 +28,8 @@ export {
     EarthChallenge,
     CompanySummary,
     CompanyList,
-    ChosenByTheBest
+    ChosenByTheBest,
+    AboutUsPage,
+    WhatWeDo,
+    OurTeam
 }
