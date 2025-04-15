@@ -1,82 +1,53 @@
 import React from 'react'
-import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+// import Image from 'next/image';
 import Link from 'next/link';
 
-const poweredBySolana = () => {
+const PoweredBySolana = () => {
+  const features = [
+    {
+      title: "Immutable Verification",
+      description: "Once recorded on Solana's blockchain, emissions data cannot be altered, ensuring complete transparency and eliminating greenwashing risks."
+    },
+    {
+      title: "Real-Time Tracking",
+      description: "Monitor emissions as they happen with transaction speeds of 65,000 TPS, enabling continuous monitoring rather than periodic reporting."
+    },
+    {
+      title: "Energy-Efficient Validation",
+      description: "Solana's proof-of-stake consensus uses just 0.0001% of the energy of traditional carbon reporting systems, aligning with our sustainability mission."
+    }
+  ]
+
   return (
-    <main className='w-full text-black'>
-        <div className='max-w-6xl mx-auto'>
-            <h2 className='text-5xl font-bold mb-4'>Powered by Solana BlockChain</h2>
-            <p className='text-2xl mb-12'>Track and verify carbon emissions across the supply chain with real-time, tamper-proof data powered by Solana.</p>
-            <div className='flex gap-4 mb-8'>
-                <div className="w-full bg-gradient-to-br from-purple-800 to-black/95 rounded-[4px]">
-                    <p className='px-12 pt-12 text-white text-3xl'>
-                        Transparency for companies and consumers
-                    </p>
-                    <Image
-                    src="/images/frame_1.png"
-                    alt="Frame 1"
-                    width={600}
-                    height={400}
-                    className='rounded-[4px]'
-
-                    />
-                </div>
-                <div className="w-full bg-gradient-to-br from-purple-800 to-black/95 rounded-[4px]">
-                    <p className='px-12 pt-12 text-white text-3xl'>
-                        Stake $EWT to Earn and Strengthen the Ecosystem                    
-                    </p>
-                    <Image
-                    src="/images/frame_2.png"
-                    alt="Frame 2"
-                    width={600}
-                    height={400}
-                    className='rounded-[4px]'
-                    />
-                </div>
-                <div className="w-full bg-gradient-to-br from-purple-800 to-black/95 rounded-[4px]">
-                    <p className='px-12 pt-12 text-white text-3xl'>
-                        Support with decentralised system                    
-                    </p>
-                    <Image
-                    src="/images/frame_3.png"
-                    alt="Frame 1"
-                    width={600}
-                    height={400}
-                    className='rounded-[4px]'
-
-                    />
-                </div>
-                
+    <div className='w-full text-black bg-[url("/images/bg.png")] min-h-screen bg-cover bg-center bg-no-repeat flex flex-col justify-between py-16'>        
+      <div className='mb-16'>
+        <h2 className='text-3xl sm:text-4xl font-bold text-center mb-6'>Powered by <span className='text-purple-700'>Solana Blockchain</span></h2>
+        <p className='text-lg sm:text-lg text-center w-full max-w-2xl mx-auto'>
+          Track and verify carbon emissions across the supply chain with real-time, tamper-proof data secured by Solana&apos;s high-performance blockchain.
+        </p>
+      </div>
+      
+      <div className='max-w-6xl mx-auto w-full px-4'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+          {features.map((feature, index) => (
+            <div key={index} className='bg-white/50 hover:bg-white backdrop-blur-sm rounded border-2 border-purple-900 p-8 flex flex-col items-center text-center transition-all hover:shadow-lg'>
+              <h3 className='text-xl font-bold mb-4'>{feature.title}</h3>
+              <p className='text-carbon'>{feature.description}</p>
             </div>
-            <div className='w-full bg-gradient-to-r from-purple-700 to-black rounded-[4px] flex justify-between '>
-                <div className='text-white p-12'>
-                    <h3 className='text-5xl mb-4 font-bold'>Solana Blockchain</h3>
-                    <p className='text-2xl mb-20'>
-                        Bring blockchain to the people. Solana supports experiences for power users, new consumers, and everyone in between.
-                    </p>
-                    <Link href="https://solana.com/" target="_blank" className='bg-white rounded-full text-black flex justify-between gap-20 items-center w-fit'>
-                        <p className='p-6 text-2xl'>Learn more</p>
-                        <div className="m-2 h-15 w-15 rounded-full bg-black flex items-center justify-center text-white hover:bg-gray-800 transition">
-                        <ArrowRight />
-                        </div>
-                    </Link>
-                </div>
-                <div className='flex items-end'>
-                    <Image
-                    src="/images/frame_4.png"
-                    alt="Frame 1"
-                    width={1000}
-                    height={800}
-                    className='rounded-[4px]'
-                    />
-                </div>
-            </div>
-
+          ))}
         </div>
-    </main>
-)
+      </div>
+      
+      <div className='mt-12 text-center'>
+        <Link href="https://solana.com/" target='_blank' className='inline-flex items-center text-carbon font-medium hover:text-purple-700'>
+          <p className='transition-all duration-150 hover:mr-2'>Learn more about Solana blockchain</p>
+          <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </Link>
+      </div>
+    </div>
+  )
 }
 
-export default poweredBySolana
+export default PoweredBySolana
