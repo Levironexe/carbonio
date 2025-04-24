@@ -119,7 +119,7 @@ const Navbar = () => {
           {/* Wallet button - moved outside the nav items loop */}
           <div className="ml-4 flex items-center">
           <WalletMultiButton
-            className="bg-purple-700"
+            className="bg-carbon"
             style={{
               fontFamily: "Oxanium",
               color: "white",
