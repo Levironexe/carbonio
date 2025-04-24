@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Oxanium } from "next/font/google";
 import "./globals.css";
-import {NavBar, Footer} from './components/index'
+import {NavBar, Footer, AppWalletProvider} from './components/index'
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,13 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <NavBar/>
       <body
         className={`${oxanium.variable} antialiased`}
       >
-        {children}
+        <AppWalletProvider>
+        <NavBar/>
+          {children}
+        <Footer/>
+        </AppWalletProvider>
       </body>
-      <Footer/>
     </html>
   );
 }

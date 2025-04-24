@@ -1,8 +1,11 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-// import Image from 'next/image';
 import { ChevronDown } from 'lucide-react'
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+
+// Import wallet adapter styles
+import '@solana/wallet-adapter-react-ui/styles.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,12 +23,34 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
+  
+  interface DropdownItem {
+    title: string;
+    href: string;
+    target?: string;
+  }
+  
+  interface NavItem {
+    title: string;
+    href: string;
+    icon?: React.ReactNode;
+    dropdown?: DropdownItem[];
+  }
+  
   // Nav items with dropdown configuration
-  const navItems = [
+  const navItems: NavItem[] = [
     {
-      title: "Company dashboard",
-      href: "/company-dashboard",
+      title: "Features",
+      href: "/features",
+      icon:<ChevronDown className='h-4 w-4'/>,
+      dropdown: [
+        {title: "Company dashboard", href: "/company-dashboard", target: "_blank",},
+        {title: "Upload data", href: "https://www.web-cua-Trung.com", target: "_blank"},
+      ]
+    },
+    {
+      title: "Our globe",
+      href: "/our-globe",
     },
     {
       title: "About us",
@@ -43,23 +68,14 @@ const Navbar = () => {
   ];
 
   return (
-    <div className={`w-full p-2 sm:p-4 md:sticky md:z-40 ${isScrolled ? "-top-50" : "top-0"} transition-all duration-200`}>
-      <div className='mx-auto bg-white border-carbon border-2 max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-2 rounded-[4px]'>
+    <main className={`w-full p-2 sm:p-4 md:sticky md:z-40 ${isScrolled ? "-top-50" : "top-0"} transition-all duration-200`}>
+      <div className='mx-auto bg-transparent border-carbon border-2 max-w-6xl flex flex-col sm:flex-row justify-between items-center gap-2 rounded-[4px]'>
         <Link href="/">
           <div className='flex items-center gap-2'>
             <div className='text-purple-700 w-auto text-xl sm:text-xl font-bold pl-2 sm:pl-3'>carbonio</div>
-            {/* <div className='border-r-[1.5px] border-carbon h-6'></div>              
-            <div className='text-carbon h-full'> 
-              <Image
-                src="/images/solana_logo.png"
-                alt='solana blockchain logo'
-                width={24}
-                height={24}
-              />
-            </div> */}
           </div>
         </Link>
-        <div className='w-full sm:w-fit text-white/80 text-base sm:text-lg md:text-lg flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center sm:justify-end bg-purple-700 px-2 sm:px-3 py-1'>
+        <div className='w-full sm:w-fit text-white/80 text-base sm:text-lg md:text-lg flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center sm:justify-end bg-purple-700 px-2 sm:px-3 py-1 items-center'>
           {navItems.map((item, index) => (
             <div 
               key={index} 
@@ -73,7 +89,6 @@ const Navbar = () => {
               >
                 {item.title}
                 {item.icon}
-
               </Link>
               
               {/* Dropdown menu */}
@@ -88,6 +103,7 @@ const Navbar = () => {
                       <li key={index}>
                         <Link 
                           href={dropdownItem.href}
+                          target={dropdownItem.target}
                           className="block px-4 py-2 rounded text-black hover:bg-purple-50 text-sm border-2 border-carbon mt-2 ml-2 mr-4"
                         >
                           {dropdownItem.title}
@@ -99,9 +115,25 @@ const Navbar = () => {
               )}
             </div>
           ))}
+          
+          {/* Wallet button - moved outside the nav items loop */}
+          <div className="ml-4 flex items-center">
+          <WalletMultiButton
+            className="bg-purple-700"
+            style={{
+              fontFamily: "Oxanium",
+              color: "white",
+              fontWeight: "normal",
+              fontSize: "1.125rem",
+              height: "1.75rem",
+              borderRadius: "0",
+              padding: "0",
+            }}
+          />
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 

@@ -33,22 +33,22 @@ const Footer = () => {
                           href="https://www.instagram.com/levironhere/" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="hover:scale-125 transition-all duration-200 text-purple-800">
-                          <Instagram size={36} />
+                          className="hover:scale-110 transition-all duration-200 text-purple-800">
+                          <Instagram size={36}/>
                         </a>
-                        <a 
+                        <a
                           href="https://twitter.com/your_mom" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="hover:scale-125 transition-all duration-200 text-purple-800">
-                          <Twitter size={36} />
+                          className="hover:scale-110 transition-all duration-200 text-purple-800">
+                          <Twitter size={36}/>
                         </a>
                         <a 
                           href="https://www.facebook.com/bao.nam.703289" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="hover:scale-125 transition-all duration-200 text-purple-800">
-                          <Facebook size={36} />
+                          className="hover:scale-110 transition-all duration-200 text-purple-800">
+                          <Facebook size={36}/>
                         </a>
                     </div>
                     <div className='flex gap-6 text-[18px]'>
@@ -61,11 +61,9 @@ const Footer = () => {
                         <div className='group relative transition-all duration-300'>
                             <div className="absolute inset-0 bg-carbon transition-all duration-300 group-hover:-bottom-2 group-hover:-right-2 rounded"></div>
                             <Link className='relative' href='/privacy-policy'>                      
-                            <p className='px-4 py-2 shadow z-10 bg-white border-carbon border-2 rounded'>Privacy Policy</p>
+                                <p className='px-4 py-2 shadow z-10 bg-white border-carbon border-2 rounded'>Privacy Policy</p>
                             </Link>
                         </div>
-                       
-                        
                     </div>
                     
                 </div>

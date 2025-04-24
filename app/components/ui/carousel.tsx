@@ -221,7 +221,7 @@ export function Carousel({ slides, loop = true }: CarouselProps) {
       </div>
       
       {/* Controls positioned below the slide container */}
-      <div className="flex justify-center items-center mt-8">
+      <div className="flex justify-center items-center my-8">
         <CarouselControl
           type="previous"
           title="Go to previous slide"
