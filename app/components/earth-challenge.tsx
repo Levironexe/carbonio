@@ -132,7 +132,7 @@ const fadeIn = {
             ))}
             
             <motion.div 
-              className="text-black text-base sm:text-lg md:text-xl lg:text-[18px] col-span-1 sm:col-span-2 row-span-1 text-right"
+              className="text-black text-base sm:text-lg md:text-xl lg:text-[18px] col-span-1 sm:col-span-2 row-span-1 text-justify"
               variants={fadeIn}
               transition={{ duration: 0.7 }}
             >

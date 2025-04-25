@@ -23,50 +23,47 @@ const Footer = () => {
                     <div >
                         <h2 className='text-4xl sm:text-4xl md:text-6xl text-purple-700 font-bold '>carbonio</h2>
                         <p className='text-base sm:text-lg md:text-xl lg:text-[18px] w-full md:w-4/5'>Transforming Carbon Footprint Auditing with the Power of Solana Blockchain Technology.</p>    
-                        
                     </div>
                     <p className='text-sm sm:text-base md:text-lg lg:text-[18px]'>© 2025 carbonio. All rights reserved.</p>
 
                 </div>
-            <div className='flex-[1] flex flex-col items-end justify-end gap-12  py-4 sm:py-6 md:py-8 lg:py-12'>
+            <div className='flex-[1] flex flex-col items-end justify-end gap-8  py-4 sm:py-6 md:py-8 lg:py-12'>
                     <div className='flex gap-8'>
                         <a 
                           href="https://www.instagram.com/levironhere/" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="hover:scale-125 transition-all duration-200 text-purple-800">
-                          <Instagram size={24} />
+                          className="hover:scale-110 transition-all duration-200 text-purple-800">
+                          <Instagram size={36}/>
                         </a>
-                        <a 
+                        <a
                           href="https://twitter.com/your_mom" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="hover:scale-125 transition-all duration-200 text-purple-800">
-                          <Twitter size={24} />
+                          className="hover:scale-110 transition-all duration-200 text-purple-800">
+                          <Twitter size={36}/>
                         </a>
                         <a 
                           href="https://www.facebook.com/bao.nam.703289" 
                           target="_blank" 
                           rel="noopener noreferrer"
-                          className="hover:scale-125 transition-all duration-200 text-purple-800">
-                          <Facebook size={24} />
+                          className="hover:scale-110 transition-all duration-200 text-purple-800">
+                          <Facebook size={36}/>
                         </a>
                     </div>
-                    <div className='flex gap-8 text-[18px]'>
+                    <div className='flex gap-6 text-[18px]'>
                         <div className='group relative transition-all duration-300'>
                             <div className="absolute inset-0 bg-carbon transition-all duration-300 group-hover:-bottom-2 group-hover:-right-2 rounded-[4px]"></div>
                             <Link className='relative' href='/cookies-policy'>                      
-                            <p className='p-4 shadow z-10 bg-white border-carbon border-2 rounded'>Cookies Policy</p>
+                            <p className='px-4 py-2 shadow z-10 bg-white border-carbon border-2 rounded'>Cookies Policy</p>
                             </Link>
                         </div>
                         <div className='group relative transition-all duration-300'>
-                            <div className="absolute inset-0 bg-carbon transition-all duration-300 group-hover:-bottom-2 group-hover:-right-2 rounded-[4px]"></div>
+                            <div className="absolute inset-0 bg-carbon transition-all duration-300 group-hover:-bottom-2 group-hover:-right-2 rounded"></div>
                             <Link className='relative' href='/privacy-policy'>                      
-                            <p className='p-4 shadow z-10 bg-white border-carbon border-2 rounded'>Privacy Policy</p>
+                                <p className='px-4 py-2 shadow z-10 bg-white border-carbon border-2 rounded'>Privacy Policy</p>
                             </Link>
                         </div>
-                       
-                        
                     </div>
                     
                 </div>

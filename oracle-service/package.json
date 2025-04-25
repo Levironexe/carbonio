@@ -1,0 +1,1 @@
+{"scripts":{"build":"tsc","start":"node dist/index.js","dev":"ts-node src/index.ts"},"dependencies":{"@solana/kit":"^2.1.0","dotenv":"^16.5.0"}}

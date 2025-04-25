@@ -201,7 +201,7 @@ export function Carousel({ slides, loop = true }: CarouselProps) {
       {/* Slide container with fixed height */}
       <div className="relative h-[400px]">
         <ul
-          className="absolute inset-0 flex gap-24 h-full transition-transform duration-1000 ease-in-out"
+          className="absolute inset-0 flex h-full transition-transform duration-1000 ease-in-out"
           style={{
             transform: `translateX(-${current * (100 / slides.length)}%)`,
             width: `${slides.length * 100}%`
@@ -221,7 +221,7 @@ export function Carousel({ slides, loop = true }: CarouselProps) {
       </div>
       
       {/* Controls positioned below the slide container */}
-      <div className="flex justify-center items-center mt-8">
+      <div className="flex justify-center items-center my-8">
         <CarouselControl
           type="previous"
           title="Go to previous slide"
