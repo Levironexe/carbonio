@@ -70,8 +70,6 @@ const ShowData = () => {
   return (
     <div className="w-full mx-auto">
       <div className='w-full bg-gradient-to-r from-black to-carbon border-t-2 border-b-2 border-black  p-2  sm:p-4 md:p-6 px-4 sm:px-6 md:px-10'>
-
-      
       <div className='mx-auto max-w-6xl flex justify-between items-end gap-8 mb-12'>
         <div className="flex-[2] py-4">
           <div className='mb-6'>
@@ -100,7 +98,34 @@ const ShowData = () => {
           </div>
 
           {loading ? (
-            <p>Loading emissions data...</p>
+            <div>
+            <h2 className="text-xl font-semibold mb-4  text-white">
+              CO2 Emissions for <span className='bg-white text-purple-700 px-2 py-1 rounded'> {emissionsData[0]?.country.value || selectedCountry}</span>
+            </h2>
+            
+            <div className="overflow-x-auto rounded">
+              <table className="min-w-full  border-t border-white  text-white">
+                <thead>
+                  <tr>
+                    <th className="py-2 px-4 border-b  text-left">Year</th>
+                    <th className="py-2 px-4 border-b text-left">Emissions (Mt CO2e)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Array(9).fill().map((_, index) => {
+                    return (
+                      <tr key={index}>
+                        <td className="py-2 px-4 border-b">...</td>
+                        <td className="py-2 px-4 border-b">
+                          ...
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
           ) : error ? (
             <p className="text-red-500">{error}</p>
           ) : (

@@ -1,47 +1,40 @@
 "use client"
+import React from 'react'
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
 
-const MeetCarbonioSection = () => {
-  // Animation variants
-  const fadeUp = {
-    hidden: { opacity: 0, y: 100 },
-    reveal: { opacity: 1, y: 0 },
-  }
+// Animation configuration for fading up elements
+const fadeUp = {
+    hidden: {opacity: 0, y: 50},
+    reveal: {opacity: 1, y: 0},
+}
 
+const MeetCarbonioSection = () => {
   return (
-    <main className="w-full p-2 sm:p-4 md:p-6 px-4 sm:px-6 md:px-10 overflow-hidden bg-white">
+    <main className='overflow-hidden p-2 sm:p-4 md:p-6 px-4 sm:px-6 md:px-10'>
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          className="w-full sm:w-3/4 md:w-1/2 mb-6 sm:mb-8 md:mb-12"
-          initial="hidden"
-          whileInView="reveal"
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          variants={fadeUp}
-        >
+        <div className="w-full sm:w-3/4 md:w-1/2 mb-6 sm:mb-8 md:mb-12">
           <h2 className="font-bold text-[18px] sm:text-3xl md:text-4xl lg:text-4xl text-black mb-2 sm:mb-3 md:mb-4">
             Meet <span className="text-purple-700">CARBONIO</span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl lg:text-[18px] text-black">
             A global Solana blockchain-based system accelerate the move to a decarbonised future.
           </p>
-        </motion.div>
+        </div>
 
         <motion.div 
-          className="w-full flex flex-col lg:flex-row gap-4 sm:gap-6 md:gap-8 text-black"
-          initial="hidden"
-          whileInView="reveal"
-          viewport={{ once: true }}
+          className="flex flex-col lg:flex-row gap-4 sm:gap-6 md:gap-8 text-black"
+          initial='hidden'
+          whileInView='reveal'
           transition={{ staggerChildren: 0.2 }}
         >
           {/* First Card */}
           <motion.div
-            className="w-full lg:flex-1 flex flex-col justify-between rounded-[4px] border-2 border-carbon shadow-carbon shadow-lg hover:shadow-md pt-6 sm:pt-8 md:pt-12 hover:scale-[1.02] transition-all duration-200"
+            className="w-full lg:flex-1 flex flex-col justify-between rounded-[4px] border-2 border-carbon shadow-carbon shadow-lg  pt-6 sm:pt-8 md:pt-12"
             variants={fadeUp}
-            transition={{ duration: 0.7, delay: 0.1 }}
+            transition={{duration: 0.5, delay:0.2}}
           >
             <div>
               <h3 className="font-bold text-xl sm:text-[18px] mb-2 sm:mb-3 md:mb-4 px-3 sm:px-4 md:px-6">
@@ -52,7 +45,6 @@ const MeetCarbonioSection = () => {
                 data.
               </p>
             </div>
-
             <Image
               src="/images/road.png"
               alt="trust"
@@ -64,9 +56,9 @@ const MeetCarbonioSection = () => {
 
           {/* Second Card */}
           <motion.div
-            className="w-full lg:flex-1 flex flex-col justify-between rounded-[4px] border-2 border-carbon shadow-carbon shadow-lg hover:shadow-md pt-6 sm:pt-8 md:pt-12 hover:scale-[1.02] transition-all duration-200"
+            className="lg:flex-1 flex flex-col justify-between rounded border-2 border-carbon shadow-carbon shadow-lg pt-6 sm:pt-8 md:pt-12 "
             variants={fadeUp}
-            transition={{ duration: 0.7, delay: 0.25 }}
+            transition={{duration: 0.5, delay:0.4}}
           >
             <div>
               <h3 className="font-bold text-xl sm:text-[18px] mb-2 sm:mb-3 md:mb-4 px-3 sm:px-4 md:px-6">
@@ -90,9 +82,9 @@ const MeetCarbonioSection = () => {
             <div className="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8">
               {/* Third Card */}
               <motion.div
-                className="w-full md:flex-1 flex flex-col justify-between rounded-[4px] border-2 border-carbon shadow-carbon shadow-lg hover:shadow-md py-6 sm:py-8 md:py-12 hover:scale-[1.02] transition-all duration-200"
+                className="w-full md:flex-1 flex flex-col justify-between rounded-[4px] border-2 border-carbon shadow-carbon shadow-lg  py-6 sm:py-8 md:py-12 "
                 variants={fadeUp}
-                transition={{ duration: 0.7, delay: 0.4 }}
+                transition={{duration: 0.5, delay:0.6}}
               >
                 <div>
                   <h3 className="font-bold text-xl sm:text-[18px] mb-2 sm:mb-3 md:mb-4 px-3 sm:px-4 md:px-6">
@@ -114,9 +106,9 @@ const MeetCarbonioSection = () => {
 
               {/* Fourth Card */}
               <motion.div
-                className="w-full md:flex-1 flex flex-col justify-between rounded-[4px] border-2 border-carbon shadow-carbon shadow-lg hover:shadow-md pt-6 sm:pt-8 md:pt-12 hover:scale-[1.02] transition-all duration-200"
+                className="w-full md:flex-1 flex flex-col justify-between rounded-[4px] border-2 border-carbon shadow-carbon shadow-lg  pt-6 sm:pt-8 md:pt-12 "
                 variants={fadeUp}
-                transition={{ duration: 0.7, delay: 0.55 }}
+                transition={{duration: 0.5, delay:0.8}}
               >
                 <div>
                   <h3 className="font-bold text-xl sm:text-[18px] mb-2 sm:mb-3 md:mb-4 px-3 sm:px-4 md:px-6">
@@ -138,13 +130,13 @@ const MeetCarbonioSection = () => {
             </div>
 
 
-              <Link 
-                href="#specialists" 
-                className='bg-purple-700 hover:bg-purple-600 rounded-[4px] h-full p-3 sm:p-4 text-white shadow-purple-700 shadow-lg flex justify-between items-center text-base sm:text-lg md:text-xl lg:text-[18px] hover:pr-4 sm:hover:pr-5 md:hover:pr-6 transition-all duration-200'
-              >
-                <p>Meet our specialist</p>
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"/>
-              </Link>
+            <Link 
+              href="#specialists" 
+              className='bg-purple-700 hover:bg-purple-600 rounded-[4px] h-full p-3 sm:p-4 text-white shadow-purple-700 shadow-lg flex justify-between items-center text-base sm:text-lg md:text-xl lg:text-[18px] hover:pr-4 sm:hover:pr-5 md:hover:pr-6 transition-all duration-200'
+            >
+              <p>Meet our specialist</p>
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"/>
+            </Link>
           </div>
         </motion.div>
       </div>

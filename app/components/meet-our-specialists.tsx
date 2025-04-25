@@ -29,7 +29,7 @@ const MeetOurSpecialistsCarousel = () => {
       title: "As an Industrial Carbon Strategy Lead, I've seen countless sustainability initiatives struggle with data reliability. This platform is a game-changer—it transforms abstract emission targets into actionable insights with blockchain verification that ensures accountability. For the first time, I can confidently map our carbon reduction journey with data I know is immutable and transparent. This isn't just about reporting numbers; it's about building the credibility needed to drive meaningful change across our industrial operations.",
       button: "Learn More",
       src: "/images/khang_portrait.png",
-      author: "Hoang Trung",
+      author: "Gia Khang",
       role: "AWS specialist & Industrial Carbon Strategy Lead"
     },
   ];
