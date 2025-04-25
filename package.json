@@ -19,7 +19,7 @@
     "@solana/wallet-adapter-react-ui": "^0.9.38",
     "@solana/wallet-adapter-walletconnect": "^0.1.20",
     "@solana/wallet-adapter-wallets": "^0.19.36",
-    "@solana/web3.js": "^1.98.1",
+    "@solana/web3.js": "^1.98.2",
     "@supabase/supabase-js": "^2.49.4",
     "@walletconnect/universal-provider": "^2.20.0",
     "anchor-bankrun": "^0.5.0",
