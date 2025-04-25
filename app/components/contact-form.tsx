@@ -7,6 +7,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { createClient } from "@supabase/supabase-js"
 import axios from "axios"
 import { stringify } from "querystring"
+import { useCompanyActions } from "../lib/company-utils"
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -38,6 +39,7 @@ interface submitData {
 }
 
 const ContactForm = () => {
+  const { createCompany, fetchCompanyData, addProduct, verify } = useCompanyActions()
   const [selectedAddOns, setSelectedAddOns] = useState<string[]>([])
   const { publicKey } = useWallet()
   const walletAddress = publicKey ? publicKey.toString() : ''
@@ -78,6 +80,14 @@ const ContactForm = () => {
       website: website,
       field: selectedAddOns,
     };
+
+    //Create company on the blockchain
+    try{
+      await createCompany(companyName);
+    }catch(error){
+      console.error("Error creating company:", error);
+    }
+
     try {
       if (endpoint) {
         const response = await axios.post(endpoint, companyData, {

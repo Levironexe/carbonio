@@ -1,0 +1,204 @@
+{
+  "address": "ACRzjs3gnGYhkRZaGaCjMdS8ybVsAHv4n4dQMzKLoYaf",
+  "metadata": {
+    "name": "company_registration",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "add_product",
+      "discriminator": [
+        0,
+        219,
+        137,
+        36,
+        105,
+        180,
+        164,
+        93
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "signer": true
+        },
+        {
+          "name": "company",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  109,
+                  112,
+                  97,
+                  110,
+                  121
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "company_address"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "company_address",
+          "type": "pubkey"
+        }
+      ]
+    },
+    {
+      "name": "init_company",
+      "discriminator": [
+        4,
+        20,
+        200,
+        152,
+        94,
+        207,
+        211,
+        98
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "company",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  109,
+                  112,
+                  97,
+                  110,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "company_name",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "verify",
+      "discriminator": [
+        133,
+        161,
+        141,
+        48,
+        120,
+        198,
+        88,
+        150
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "company",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  111,
+                  109,
+                  112,
+                  97,
+                  110,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "signer"
+              }
+            ]
+          }
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Company",
+      "discriminator": [
+        32,
+        212,
+        52,
+        137,
+        90,
+        7,
+        206,
+        183
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "Company",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "company_name",
+            "type": "string"
+          },
+          {
+            "name": "verification_status",
+            "type": "string"
+          },
+          {
+            "name": "verification_time",
+            "type": "i64"
+          },
+          {
+            "name": "products_amount",
+            "type": "u32"
+          },
+          {
+            "name": "company_signer",
+            "type": "pubkey"
+          }
+        ]
+      }
+    }
+  ]
+}
