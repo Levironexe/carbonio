@@ -94,7 +94,7 @@ const Navbar = () => {
               {/* Dropdown menu */}
               {item.dropdown && (
                 <div 
-                  className={`absolute left-0 mt-2 w-48 bg-white border-2 border-carbon rounded shadow-lg z-50 transition-all duration-150 ${
+                  className={`absolute left-0 mt-2 w-48 bg-carbon border-2 border-carbon rounded shadow-lg z-50 transition-all duration-150 ${
                     activeDropdown === index ? 'opacity-100 visible' : 'opacity-0 invisible'
                   }`}
                 >
@@ -104,7 +104,7 @@ const Navbar = () => {
                         <Link 
                           href={dropdownItem.href}
                           target={dropdownItem.target}
-                          className="block px-4 py-2 rounded text-black hover:bg-purple-50 text-sm border-2 border-carbon mt-2 ml-2 mr-4"
+                          className="block px-4 py-2 rounded text-white text-sm text-center mt-2 mx-2 hover:bg-black"
                         >
                           {dropdownItem.title}
                         </Link>
@@ -117,11 +117,10 @@ const Navbar = () => {
           ))}
           
           {/* Wallet button - moved outside the nav items loop */}
-          <div className="ml-4 flex items-center">
+          <div className="flex items-center">
           <WalletMultiButton
-            className="bg-carbon"
             style={{
-              fontFamily: "Oxanium",
+              fontFamily: "oxanium",
               color: "white",
               fontWeight: "normal",
               fontSize: "1.125rem",

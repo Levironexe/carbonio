@@ -1,42 +1,45 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-// import Image from 'next/image';
-import { createClient } from '@supabase/supabase-js';
 import Link from 'next/link';
+import Image from 'next/image';
+// Update interface to match the API response
+interface Company {
+  id: string;
+  name: string;
+  description: string;
+  field: string;
+  contact_name: string;
+  contact_emaill: string;
+  phone_number: string;
+  wallet_address: string;
+  verification_date: string | null;
+  verification_status: string;
+  created_at: string;
+  updated_at: string;
+}
 
-// Initialize Supabase client
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  {
-    auth: {
-      persistSession: false,
-      autoRefreshToken: false,
-      detectSessionInUrl: false
-    },
-    global: {
-      headers: {
-        'apikey': process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!}`
-      }
-    }
-  }
-)
+interface ApiResponse {
+  data: Company[];
+}
 
+// Display interface (what we show on the UI)
 interface CompanyData {
   companyName: string;
   field: string;
   registrationDate: string;
   totalCarbonEmission: number;
+  wallet_address: string;
   productTracked: number;
   lastUpdate: string;
+  verificationStatus: string;
+  verificationDate: string;
 }
 
 const CompanyList = () => {
   const [companies, setCompanies] = useState<CompanyData[]>([]);
   const [loading, setLoading] = useState(true);
-  const [pageDecimal, setPageDecimal] = useState(0);
   const [page, setPage] = useState(0);
+  const [pageDecimal, setPageDecimal] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const itemsPerPage = 5;
 
@@ -46,72 +49,41 @@ const CompanyList = () => {
       try {
         setLoading(true);
         
-        // Fetch companies data
-        const { data, error } = await supabase
-          .from('companies')
-          .select('id, name, field, registration_date, updated_at, verification_status')
-          .order('name')
-          .range(page, page + itemsPerPage - 1);
-
-        if (error) {
-          console.error('Error fetching company data:', error);
+        // Fetch companies data from the API instead of Supabase
+        const response = await fetch('https://carbonio-backend.onrender.com/companies/');
+        const result: ApiResponse = await response.json();
+        
+        if (!response.ok) {
+          console.error('Error fetching company data:', result);
           return;
         }
 
-        // Get total count for pagination
-        const { count, error: countError } = await supabase
-          .from('companies')
-          .select('id', { count: 'exact', head: true });
+        // Set total count for pagination
+        setTotalCount(result.data.length);
+        
+        // Get current page of companies
+        const paginatedCompanies = result.data.slice(page, page + itemsPerPage);
 
-        if (countError) {
-          console.error('Error fetching count:', countError);
-        } else {
-          setTotalCount(count || 0);
-        }
-
-        // Fetch all products for these companies
-        const companyIds = data.map(company => company.id);
-        const { data: productData, error: productError } = await supabase
-          .from('products')
-          .select('company_id, total_carbon_footprint, verification_date')
-          .in('company_id', companyIds);
-
-        if (productError) {
-          console.error('Error fetching product data:', productError);
-          return;
-        }
-
-        // Process the data to match the interface
-        const processedData: CompanyData[] = data.map(company => {
-          // Filter products for this company
-          const companyProducts = productData.filter(product => product.company_id === company.id);
+        // Process company data without trying to fetch products directly
+        // If you need product data, check if there's another endpoint available
+        const processedData: CompanyData[] = paginatedCompanies.map(company => {
+          // Since we don't have access to products data yet, use placeholder values
+          // You'll need to update this once you have the correct endpoint for products
           
-          // Calculate total carbon emissions
-          const totalCarbonEmission = companyProducts.reduce(
-            (sum, product) => sum + (product.total_carbon_footprint || 0), 
-            0
-          );
-
-          // Get latest verification date
-          const latestVerification = companyProducts.length > 0 ? 
-            new Date(Math.max(...companyProducts
-              .filter(p => p.verification_date)
-              .map(p => new Date(p.verification_date).getTime()))) : null;
-
           return {
             companyName: company.name,
             field: company.field,
-            registrationDate: company.registration_date,
-            totalCarbonEmission,
-            productTracked: companyProducts.length,
+            registrationDate: company.created_at,
+            wallet_address: company.wallet_address,
+            totalCarbonEmission: 0, // Placeholder - replace when product data is available
+            productTracked: 0,      // Placeholder - replace when product data is available
             lastUpdate: company.updated_at,
             verificationStatus: company.verification_status,
-            verificationDate: latestVerification ? latestVerification.toISOString().split('T')[0] : 'Not verified',
-            // Calculate year-over-year change (this would need historical data)
-            changePercent: -3.2 // Placeholder - ideally calculated from historical data
+            verificationDate: company.verification_date ? 
+              new Date(company.verification_date).toISOString().split('T')[0] : 
+              'Not verified'
           };
         });
-
         setCompanies(processedData);
       } catch (error) {
         console.error('Failed to fetch data:', error);
@@ -159,14 +131,26 @@ const CompanyList = () => {
                   <div className='w-[60px] h-[60px] bg-gray-200 rounded-full flex items-center justify-center'>
                     <span className='text-2xl font-bold'>{company.companyName[0]}</span>
                   </div>
-                  <div className='flex flex-col justify-end'>
-                    <Link href={`/company-dashboard/${company.companyName}`}>
-                      <h2 className='text-2xl font-bold'>{company.companyName}</h2>
-                    </Link>
+                  <div className='flex flex-col justify-end w-full'>
+                    <div className='flex items-center justify-between gap-4'>
+                      <Link href={`/company-dashboard/${company.companyName}`} className='flex items-center gap-2'>
+                        <h2 className='text-2xl font-bold text-purple-700'>{company.companyName}</h2>
+                        <Image
+                          src={"/images/verified.jpg"}
+                          width={25}
+                          height={25}
+                          alt='verified indicator'
+                        />
+                      </Link>
+                      <Link target='_blank' href={`https://explorer.solana.com/address/${company.wallet_address}}`}>
+                      <p className='text-lg font-normal ml-2 hover:underline hover:text-purple-700'><span className='text-purple-700 font-bold'>Account address:</span> {company.wallet_address}</p>
+                      </Link>
+                    </div>
+
                     <p>{company.field}</p>
                   </div>
                 </div>
-                <div className='grid grid-cols-2 gap-2'>
+                {/* <div className='grid grid-cols-2 gap-2'>
                   <p className='font-medium'>Total emission:</p>
                   <p>{company.totalCarbonEmission.toFixed(2)} kgCO₂e</p>
                   
@@ -178,8 +162,10 @@ const CompanyList = () => {
                   
                   <p className='font-medium'>Last updated:</p>
                   <p>{new Date(company.lastUpdate).toLocaleDateString()}</p>
-
-                </div>
+                  
+                  <p className='font-medium'>Verification status:</p>
+                  <p>{company.verificationStatus}</p>
+                </div> */}
               </div>
             
           ))}

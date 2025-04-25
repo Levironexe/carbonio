@@ -30,9 +30,9 @@ const PoweredBySolana = () => {
       <div className='max-w-6xl mx-auto w-full px-4'>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
           {features.map((feature, index) => (
-            <div key={index} className='bg-white/50 hover:bg-white backdrop-blur-sm rounded border-2 border-purple-900 p-8 flex flex-col items-center text-center transition-all hover:shadow-lg'>
+            <div key={index} className='bg-white/50 text-carbon hover:bg-carbon hover:border-carbon hover:text-white backdrop-blur-sm rounded border-2 border-purple-900 p-8 flex flex-col items-center text-center transition-all hover:shadow-lg duration-200'>
               <h3 className='text-xl font-bold mb-4'>{feature.title}</h3>
-              <p className='text-carbon'>{feature.description}</p>
+              <p className=''>{feature.description}</p>
             </div>
           ))}
         </div>

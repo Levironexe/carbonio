@@ -28,7 +28,7 @@ const OurTeam = () => {
         {
             id: 4,
             name: "Gia Khang",
-            portrait: "/images/phat_portrait.jpg",
+            portrait: "/images/khang_portrait.png",
             role: "Environmental activist & Senior backend developer",
             linkedin: ""
         },
