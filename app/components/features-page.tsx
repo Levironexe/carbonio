@@ -4,6 +4,7 @@ import { useState } from "react"
 import { ArrowRight, Play, LineChart, BarChart2 } from "lucide-react"
 import Image from "next/image"
 import GettingStarted from "./getting-started-section"
+import WantYourCompanyVerified from "./WantYourCompanyVerified"
 
 const FeaturesPage = () => {
   const [isHovered, setIsHovered] = useState<string | null>(null)
@@ -44,7 +45,7 @@ const FeaturesPage = () => {
         </div>
 
         {/* Features section - stacks on mobile, side by side on larger screens */}
-        <div className="flex flex-col md:flex-row relative mb-16 gap-6 md:gap-0">
+        <div className="flex flex-col md:flex-row relative mb-16 gap-6 md:gap-0 shadow-lg shadow-carbon rounded">
           {/* Overlay for hover effect */}
           <div
             className={`absolute rounded inset-0 w-full ${
@@ -172,6 +173,7 @@ const FeaturesPage = () => {
           </div>
         </div>
         <GettingStarted/>
+        <WantYourCompanyVerified/>
       </div>     
     </div>
   )

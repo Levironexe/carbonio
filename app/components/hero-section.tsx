@@ -30,7 +30,7 @@ const HeroSection = () => {
             </div>
             </div>
             <div className="flex items-center gap-4">
-              <p className="">or</p>
+              <p className="font-bold">OR</p>
               <Link href={"/web-cua-Trung"} className="flex w-full rounded bg-purple-700 text-white hover:bg-purple-600 shadow-lg shadow-purple-700 px-4 py-2 border-2 border-purple-700 justify-center transition-all duration-200" >Upload your carbon footprint and calculate it</Link>
             </div>
           </div>

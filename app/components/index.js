@@ -24,6 +24,7 @@ import GettingStarted from './getting-started-section'
 import TutorialA from './tutorial-a-section'
 import TutorialB from './tutorial-b-section'
 import AppWalletProvider from './AppWalletProvider'
+import WantYourCompanyVerified from './WantYourCompanyVerified'
 
 export {
     NavBar,
@@ -51,5 +52,6 @@ export {
     GettingStarted,
     TutorialA,
     TutorialB,
-    AppWalletProvider
+    AppWalletProvider,
+    WantYourCompanyVerified
 }
