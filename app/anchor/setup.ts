@@ -9,10 +9,11 @@ import IDL from "./idl.json";
 const typedIDL = IDL as CompanyRegistration;
 window.Buffer = window.Buffer || Buffer;
 
-const programId = new PublicKey("ACRzjs3gnGYhkRZaGaCjMdS8ybVsAHv4n4dQMzKLoYaf");
-const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
-
 export function useCompanyProgram(){
+
+  const programId = new PublicKey("ACRzjs3gnGYhkRZaGaCjMdS8ybVsAHv4n4dQMzKLoYaf");
+  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+
   const wallet = useWallet();
 
   const provider = useMemo(() => {
