@@ -50,7 +50,7 @@ const CompanyList = () => {
         setLoading(true);
         
         // Fetch companies data from the API instead of Supabase
-        const response = await fetch('https://carbonio-backend.onrender.com/companies/');
+        const response = await fetch('https://carbonio-backend.onrender.com/companies/verified');
         const result: ApiResponse = await response.json();
         
         if (!response.ok) {
@@ -127,14 +127,14 @@ const CompanyList = () => {
           
           {companies.map((company, index) => (
               <div key={index} className='px-2 sm:px-4 py-4 border-carbon border-2 mb-4 rounded'>
-                <div className='flex gap-4 mb-6'>
+                <div className='flex gap-4'>
                   <div className='w-[60px] h-[60px] bg-gray-200 rounded-full flex items-center justify-center'>
                     <span className='text-2xl font-bold'>{company.companyName[0]}</span>
                   </div>
                   <div className='flex flex-col justify-end w-full'>
                     <div className='flex items-center justify-between gap-4'>
-                      <Link href={`/company-dashboard/${company.companyName}`} className='flex items-center gap-2'>
-                        <h2 className='text-2xl font-bold text-purple-700'>{company.companyName}</h2>
+                      <Link href={`/company-dashboard/${company.companyName}`} className='flex items-start gap-2'>
+                        <h2 className='text-2xl font-bold text-purple-700 mb-1'>{company.companyName}</h2>
                         <Image
                           src={"/images/verified.jpg"}
                           width={25}
@@ -146,8 +146,17 @@ const CompanyList = () => {
                       <p className='text-lg font-normal ml-2 hover:underline hover:text-purple-700'><span className='text-purple-700 font-bold'>Account address:</span> {company.wallet_address}</p>
                       </Link>
                     </div>
-
-                    <p>{company.field}</p>
+                    {Array.isArray(company.field) ? (
+                      <div className="flex flex-wrap gap-1">
+                        {company.field.map((item, index) => (
+                          <span key={index} className="bg-gray-200 px-2 py-1 rounded text-xs">
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    ) : (
+                      <p>{company.field || '-'}</p>
+                    )}                  
                   </div>
                 </div>
                 {/* <div className='grid grid-cols-2 gap-2'>
@@ -184,7 +193,7 @@ const CompanyList = () => {
                 <button 
                   onClick={handlePageDecimalDecrement}
                   disabled={page === 0}
-                  className="relative bg-white px-4 py-2 border-2 border-carbon rounded flex-[1] disabled:opacity-50"
+                  className="relative bg-white px-4 py-2 border-2 border-carbon rounded flex-[1] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Previous
                 </button>
@@ -195,7 +204,7 @@ const CompanyList = () => {
                 <button
                   onClick={handlePageDecimalIncrement}
                   disabled={page + itemsPerPage >= totalCount}
-                  className="relative px-4 py-2 border-2 border-carbon rounded flex-[1] bg-white disabled:opacity-50"
+                  className="relative px-4 py-2 border-2 border-carbon rounded flex-[1] bg-white disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Next
                 </button>
