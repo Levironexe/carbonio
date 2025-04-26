@@ -12,7 +12,14 @@ export const useCompanyActions = () => {
 
     //Fetch company data from given wallet address
     const fetchCompanyData = async (companyWalletAddr: string) => {
-        if (!program || !companyWalletAddr) return null;
+        const dataToReturnNull = {
+            companyName: '',
+            companyWalletAddr: '',
+            verificationStatus: '',
+            verificationTime: '',
+            productsAmount: 0,
+        }
+        if (!program || !companyWalletAddr) return dataToReturnNull;
 
         const walletAddr = new PublicKey(companyWalletAddr);
 
@@ -24,23 +31,27 @@ export const useCompanyActions = () => {
         try {
             const data = await program.account.company.fetch(pda);
             const unixTimestamp = data.verificationTime.toNumber(); // i64 -> number
-            let date = null;
-            if (unixTimestamp === "0"){
-                date = new Date(unixTimestamp * 1000); // Convert seconds to milliseconds 
-                date = date.toLocaleString();
-            }else{
-                date = "Not verified yet";
+            if (data.verificationStatus.toString() == "Unverified") {
+                let date = null;
+                if (unixTimestamp === "0"){
+                    date = new Date(unixTimestamp * 1000); // Convert seconds to milliseconds 
+                    date = date.toLocaleString();
+                } else{
+                    date = "Not verified yet";
+                }
+                const dataToReturn = {
+                    companyName: data.companyName.toString(),
+                    companyWalletAddr: data.companySigner.toBase58(),
+                    verificationStatus: data.verificationStatus,
+                    verificationTime: date,
+                    productsAmount: data.productsAmount, 
+                }
+                // console.log("Company wallet:", data.companySigner.toBase58())
+                return dataToReturn;
             }
-            const dataToReturn = {
-                companyName: data.companyName.toString(),
-                companyWalletAddr: data.companySigner.toBase58(),
-                verificationStatus: data.verificationStatus.toString(),
-                verificationTime: date,
-                productsAmount: data.productsAmount, 
-            }
-            console.log("Company wallet:", data.companySigner.toBase58())
-            console.log(dataToReturn);
-            return dataToReturn;
+            console.log(`company status ${data.verificationStatus}`);
+
+            return null;
         } catch (error) {
             console.error("Error fetching data:", error);
         }

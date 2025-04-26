@@ -44,7 +44,7 @@ const Navbar = () => {
       href: "/features",
       icon:<ChevronDown className='h-4 w-4'/>,
       dropdown: [
-        {title: "Company dashboard", href: "/company-dashboard", target: "_blank",},
+        {title: "Company dashboard", href: "/company-dashboard",},
         {title: "Upload data", href: "https://www.web-cua-Trung.com", target: "_blank"},
       ]
     },

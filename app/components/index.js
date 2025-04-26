@@ -8,7 +8,7 @@ import Footer from './footer'
 import ContactForm from './contact-form'
 import MeetOurSpecialists from './meet-our-specialists'
 import { EarthChallenge } from './earth-challenge'
-import CompanySummary from './company-summary'
+// import CompanySummary from './company-summary'
 import CompanyList from './company-list'
 import ChosenByTheBest from './chosen-by-the-best'
 import AboutUsPage from './about-us'
@@ -25,6 +25,7 @@ import TutorialA from './tutorial-a-section'
 import TutorialB from './tutorial-b-section'
 import AppWalletProvider from './AppWalletProvider'
 import WantYourCompanyVerified from './WantYourCompanyVerified'
+import DonutChart from './ui/DonutChart'
 
 export {
     NavBar,
@@ -37,7 +38,7 @@ export {
     ContactForm,
     MeetOurSpecialists,
     EarthChallenge,
-    CompanySummary,
+    // CompanySummary,
     CompanyList,
     ChosenByTheBest,
     AboutUsPage,
@@ -53,5 +54,6 @@ export {
     TutorialA,
     TutorialB,
     AppWalletProvider,
-    WantYourCompanyVerified
+    WantYourCompanyVerified,
+    DonutChart
 }
