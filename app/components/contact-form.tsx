@@ -130,7 +130,8 @@ const ContactForm = () => {
     
     // Create company on the blockchain
     try {
-      const result = await createCompany(companyName);
+      // await createCompany(companyName);
+      await createCompany(walletAddress);
     } catch (error) {
       console.error("Error creating company:", error);
       alert("Failed to create company on blockchain");

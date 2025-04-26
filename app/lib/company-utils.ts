@@ -17,8 +17,8 @@ export const useCompanyActions = () => {
         const walletAddr = new PublicKey(companyWalletAddr);
 
         const [pda] = PublicKey.findProgramAddressSync(
-        [Buffer.from("company"), walletAddr.toBuffer()],
-        program.programId
+            [Buffer.from("company"), walletAddr.toBuffer()],
+            program.programId
         );
 
         try {
@@ -72,17 +72,24 @@ export const useCompanyActions = () => {
     }
 
     //Change status from Unverified to Verified
-    const verify = async () => {
+    const verify = async (companyWalletAddr: string) => {
         if (!program || !companyRegistrationPDA || !publicKey) return;  // Check if publicKey is valid
-        console.log("companyRegistrationPDA", companyRegistrationPDA.toBase58());
+
+        const walletAddr = new PublicKey(companyWalletAddr);
+
+        const [pda] = PublicKey.findProgramAddressSync(
+            [Buffer.from("company"), walletAddr.toBuffer()],
+            program.programId
+        );
+        
         try {
             const tx = await program.methods
             .verify()
             .accounts({
                 signer: publicKey,
-                company: companyRegistrationPDA,
+                company: pda,
                 systemProgram: anchor.web3.SystemProgram.programId,
-                })
+            })
             .transaction();
 
             const transactionSignature = await sendTransaction(tx, connection);
