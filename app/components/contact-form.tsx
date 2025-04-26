@@ -83,7 +83,8 @@ const ContactForm = () => {
 
     //Create company on the blockchain
     try{
-      await createCompany(companyName);
+      const data = await fetchCompanyData("3X6YpHoHsXNXURev3kxmDdFC6TRHe35TWtAWpXUfNqi9");
+      console.log(data)
     }catch(error){
       console.error("Error creating company:", error);
     }
