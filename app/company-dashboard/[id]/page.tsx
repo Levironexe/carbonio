@@ -95,7 +95,11 @@ export interface Company {
 
 const page = () => {
   return (
-    <div>page</div>
+    <div className='w-full'>
+      <div className='max-w-6xl mx-auto'>
+        asdasd
+      </div>
+    </div>
   )
 }
 

@@ -1,8 +1,9 @@
 import React from 'react'
+import { AboutUsPage } from '@/app/components/index'
 
 const page = () => {
   return (
-    <div className='w-full'>page</div>
+    <AboutUsPage/>
   )
 }
 
