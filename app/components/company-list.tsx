@@ -2,6 +2,26 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
+import { useCompanyActions } from "../lib/company-utils"
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+      detectSessionInUrl: false
+    },
+    global: {
+      headers: {
+        apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!}`
+      }
+    }
+  }
+);
 // Update interface to match the API response
 interface Company {
   id: string;
@@ -23,77 +43,103 @@ interface ApiResponse {
 }
 
 // Display interface (what we show on the UI)
-interface CompanyData {
-  companyName: string;
-  field: string;
-  registrationDate: string;
-  totalCarbonEmission: number;
-  wallet_address: string;
-  productTracked: number;
-  lastUpdate: string;
-  verificationStatus: string;
-  verificationDate: string;
-}
+// interface CompanyData {
+//   companyName: string;
+//   field: string;
+//   registrationDate: string;
+//   totalCarbonEmission: number;
+//   wallet_address: string;
+//   productTracked: number;
+//   lastUpdate: string;
+//   verificationStatus: string;
+//   verificationDate: string;
+// }
+
+  interface CompanyData { //this one is for blockchain (testing)
+    companyName: string,
+    companyWalletAddr:string,
+    verificationStatus: string,
+    verificationTime: string
+    productsAmount: number,
+  }
 
 const CompanyList = () => {
+  const { createCompany, fetchCompanyData, addProduct, verify } = useCompanyActions()
   const [companies, setCompanies] = useState<CompanyData[]>([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(0);
+  const [error, setError] = useState<string | null>(null);  const [page, setPage] = useState(0);
   const [pageDecimal, setPageDecimal] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const itemsPerPage = 5;
+  const getAllWalletAddresses = async () => {
+    if (!supabase) return [];
+    
+    try {
+      // Query the companies table, selecting only wallet_address column
+      const { data, error } = await supabase
+        .from('companies')
+        .select('wallet_address')
+        // .eq('verification_status', 'verified'); //ENABLE LATER
+      if (error) {
+        throw error;
+      }
+      
+      // Extract wallet addresses from the result
+      const walletAddresses = data.map(item => item.wallet_address);
+      
+      // Filter out any null or empty wallet addresses
+      return walletAddresses.filter(address => address);
+      
+    } catch (error) {
+      console.error("Error fetching wallet addresses from Supabase:", error);
+      return [];
+    }
+  };
 
   // Fetch company data on component mount
   useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);
-        
-        // Fetch companies data from the API instead of Supabase
-        const response = await fetch('https://carbonio-backend.onrender.com/companies/verified');
-        const result: ApiResponse = await response.json();
-        
-        if (!response.ok) {
-          console.error('Error fetching company data:', result);
-          return;
+        setError(null);
+  
+        const walletAddresses = await getAllWalletAddresses();
+        // const walletAddresses = "9kY5f5Zkhk5bNm5MajJNHqi6ZpDfNiEu9BMJ5dnpF69E";
+        // console.log(walletAddresses);
+        const fetchedCompanies = [];
+        for (const walletAddr of walletAddresses) {
+          try {
+            const result = await fetchCompanyData(walletAddr);
+            console.log(`result: ${result}`);
+            console.log(`wallet address ${walletAddr}`);
+            if (result) {
+              fetchedCompanies.push(result);
+            }
+          } catch (error) {
+            console.error("Error creating company:", error);
+            alert("Failed to create company on blockchain");
+            return;
+          }
         }
-
-        // Set total count for pagination
-        setTotalCount(result.data.length);
+        // try{
+        //   const data = await fetchCompanyData("3X6YpHoHsXNXURev3kxmDdFC6TRHe35TWtAWpXUfNqi9");
+        //   console.log(data)
+        // }catch(error){
+        //   console.error("Error creating company:", error);
+        // }
         
-        // Get current page of companies
-        const paginatedCompanies = result.data.slice(page, page + itemsPerPage);
-
-        // Process company data without trying to fetch products directly
-        // If you need product data, check if there's another endpoint available
-        const processedData: CompanyData[] = paginatedCompanies.map(company => {
-          // Since we don't have access to products data yet, use placeholder values
-          // You'll need to update this once you have the correct endpoint for products
-          
-          return {
-            companyName: company.name,
-            field: company.field,
-            registrationDate: company.created_at,
-            wallet_address: company.wallet_address,
-            totalCarbonEmission: 0, // Placeholder - replace when product data is available
-            productTracked: 0,      // Placeholder - replace when product data is available
-            lastUpdate: company.updated_at,
-            verificationStatus: company.verification_status,
-            verificationDate: company.verification_date ? 
-              new Date(company.verification_date).toISOString().split('T')[0] : 
-              'Not verified'
-          };
-        });
-        setCompanies(processedData);
+        setCompanies(fetchedCompanies);
+        setTotalCount(fetchedCompanies.length);
       } catch (error) {
-        console.error('Failed to fetch data:', error);
+        console.error("Failed to fetch company data:", error);
+        setError("Failed to load company data");
       } finally {
         setLoading(false);
       }
     }
-
+  
     fetchData();
-  }, [page]);
+  }, []);
 
   const handlePageDecimalIncrement = () => {
     setPageDecimal(pageDecimal + 1);
@@ -142,21 +188,10 @@ const CompanyList = () => {
                           alt='verified indicator'
                         />
                       </Link>
-                      <Link target='_blank' href={`https://explorer.solana.com/address/${company.wallet_address}}`}>
-                      <p className='text-lg font-normal ml-2 hover:underline hover:text-purple-700'><span className='text-purple-700 font-bold'>Account address:</span> {company.wallet_address}</p>
+                      <Link target='_blank' href={`https://explorer.solana.com/address/${company.companyWalletAddr}}`}>
+                      <p className='text-lg font-normal ml-2 hover:underline hover:text-purple-700'><span className='text-purple-700 font-bold'>Account address:</span> {company.companyWalletAddr}</p>
                       </Link>
                     </div>
-                    {Array.isArray(company.field) ? (
-                      <div className="flex flex-wrap gap-1">
-                        {company.field.map((item, index) => (
-                          <span key={index} className="bg-gray-200 px-2 py-1 rounded text-xs">
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    ) : (
-                      <p>{company.field || '-'}</p>
-                    )}                  
                   </div>
                 </div>
                 {/* <div className='grid grid-cols-2 gap-2'>
