@@ -67,7 +67,7 @@ export const useCompanyActions = () => {
             )
             .accounts({
                 signer: publicKey,
-                // @ts-expect-error
+                // @ts-expect-error Anchor account type mismatch but works at runtime                
                 company: companyRegistrationPDA,
                 })
             .transaction();
@@ -92,7 +92,7 @@ export const useCompanyActions = () => {
             .verify()
             .accounts({
                 signer: publicKey,
-// @ts-expect-error
+// @ts-expect-error Anchor account type mismatch but works at runtime
 company: companyRegistrationPDA,
                 systemProgram: anchor.web3.SystemProgram.programId,
                 })
@@ -119,7 +119,7 @@ company: companyRegistrationPDA,
             )
             .accounts({
                 signer: publicKey,
-                // @ts-expect-error
+                // @ts-expect-error Anchor account type mismatch but works at runtime
             company: companyRegistrationPDA,
                 })
             .transaction();
