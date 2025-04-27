@@ -67,8 +67,8 @@ export const useCompanyActions = () => {
             )
             .accounts({
                 signer: publicKey,
-            // @ts-ignore
-            company: companyRegistrationPDA,
+                // @ts-expect-error
+                company: companyRegistrationPDA,
                 })
             .transaction();
 
@@ -92,8 +92,8 @@ export const useCompanyActions = () => {
             .verify()
             .accounts({
                 signer: publicKey,
-            // @ts-ignore
-            company: companyRegistrationPDA,
+// @ts-expect-error
+company: companyRegistrationPDA,
                 systemProgram: anchor.web3.SystemProgram.programId,
                 })
             .transaction();
@@ -119,7 +119,7 @@ export const useCompanyActions = () => {
             )
             .accounts({
                 signer: publicKey,
-            // @ts-ignore
+                // @ts-expect-error
             company: companyRegistrationPDA,
                 })
             .transaction();
