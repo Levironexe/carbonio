@@ -45,4 +45,4 @@ export function useCompanyProgram(){
   }
 }
 
-export type CompanyRegistrationData = IdlAccounts<CompanyRegistration>["Company"];
+export type CompanyRegistrationData = IdlAccounts<CompanyRegistration>["company"];
