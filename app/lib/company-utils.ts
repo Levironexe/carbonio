@@ -65,10 +65,11 @@ export const useCompanyActions = () => {
             .initCompany(
                 companyName,
             )
+            // @ts-ignore
             .accounts({
                 signer: publicKey,
                 company: companyRegistrationPDA,
-                } as any)
+                })
             .transaction();
 
             const transactionSignature = await sendTransaction(tx, connection);
@@ -89,11 +90,12 @@ export const useCompanyActions = () => {
         try {
             const tx = await program.methods
             .verify()
+            // @ts-ignore
             .accounts({
                 signer: publicKey,
                 company: companyRegistrationPDA,
                 systemProgram: anchor.web3.SystemProgram.programId,
-                } as any)
+                })
             .transaction();
 
             const transactionSignature = await sendTransaction(tx, connection);
@@ -115,10 +117,11 @@ export const useCompanyActions = () => {
             .addProduct(
                 new PublicKey("DcGHAMZsM2P2ZsrVbY9f5gS64PYBS74xnjcUzWNJBSYk"),
             )
+            // @ts-ignore
             .accounts({
                 signer: publicKey,
                 company: companyRegistrationPDA,
-                } as any)
+                })
             .transaction();
 
             const transactionSignature = await sendTransaction(tx, connection);
