@@ -500,10 +500,10 @@ const ProductDetail = () => {
               <div className='bg-gray-50 p-6 rounded-[4px]'>
                 <h3 className='text-lg font-medium mb-2'>About Carbon Tracking</h3>
                 <p className='text-gray-700 mb-2'>
-                  This product's carbon emissions are tracked throughout its lifecycle and verified on blockchain for transparency and accountability.
+                  This product&apos;s carbon emissions are tracked throughout its lifecycle and verified on blockchain for transparency and accountability.
                 </p>
                 <p className='text-gray-700'>
-                  Each production stage's carbon footprint is measured and recorded, providing a comprehensive view of the product's environmental impact.
+                  Each production stage&apos;s carbon footprint is measured and recorded, providing a comprehensive view of the product&apos;s environmental impact.
                 </p>
               </div>
             </div>
@@ -578,7 +578,7 @@ const ProductDetail = () => {
                 <div className='mb-8'>
                   <h3 className='text-xl font-medium mb-4'>Blockchain Verification</h3>
                   <p className='mb-4'>
-                    This product's data has been verified and stored on the Solana blockchain for immutable record-keeping and transparency.
+                    This product&apos;s data has been verified and stored on the Solana blockchain for immutable record-keeping and transparency.
                   </p>
                   <div className='p-4 bg-gray-50 rounded-[4px] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4'>
                     <div>

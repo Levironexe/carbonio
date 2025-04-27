@@ -74,7 +74,7 @@ const FeaturesPage = () => {
                 </h2>
               </div>
               <p className="text-sm md:text-base text-purple-700 mt-2">
-                Access comprehensive visualization of companies' emission data across all manufacturing stages
+                Access comprehensive visualization of companies&apos; emission data across all manufacturing stages
               </p>
               <div className="flex items-center justify-center py-8">
                 <Image
