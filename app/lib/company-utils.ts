@@ -68,7 +68,7 @@ export const useCompanyActions = () => {
             .accounts({
                 signer: publicKey,
                 company: companyRegistrationPDA,
-                })
+                } as any)
             .transaction();
 
             const transactionSignature = await sendTransaction(tx, connection);
@@ -93,7 +93,7 @@ export const useCompanyActions = () => {
                 signer: publicKey,
                 company: companyRegistrationPDA,
                 systemProgram: anchor.web3.SystemProgram.programId,
-                })
+                } as any)
             .transaction();
 
             const transactionSignature = await sendTransaction(tx, connection);
@@ -118,7 +118,7 @@ export const useCompanyActions = () => {
             .accounts({
                 signer: publicKey,
                 company: companyRegistrationPDA,
-                })
+                } as any)
             .transaction();
 
             const transactionSignature = await sendTransaction(tx, connection);
