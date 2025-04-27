@@ -140,7 +140,7 @@ const CompanyList = () => {
 
   const ForceRefresh = () => {
     setStopRefreshing(false);
-    fetchData;
+    fetchData();
   }
 
   const handlePageDecimalIncrement = () => {
