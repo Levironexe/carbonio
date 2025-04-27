@@ -14,21 +14,21 @@ const TutorialB = () => {
                 <div className='flex gap-4 items-center'>
                     <div className='h-6 w-6 bg-carbon rounded text-white text-center'>1</div>
                     <div>
-                        <p className='font-bold'>Navigate to the <a target='_blank' href='https//webcuatrung.com/upload' className='hover:text-purple-700 underline'>Upload</a> section from the <a target='_blank' href='https//webcuatrung.com' className='hover:text-purple-700 underline'>Carbonio Partner website</a>'s navigation bar</p>
-                        <p>From the list or search bar to view their specific product's carbon data.</p>
+                        <p className='font-bold'>Navigate to the <a target='_blank' href='https//webcuatrung.com/upload' className='hover:text-purple-700 underline'>Upload</a> section from the <a target='_blank' href='https//webcuatrung.com' className='hover:text-purple-700 underline'>Carbonio Partner website</a>&apos;s navigation bar</p>
+                        <p>From the list or search bar to view their specific product&apos;s carbon data.</p>
                     </div>
                 </div>
                 <div className='flex gap-4 items-center'>
                     <div className='h-6 w-6 bg-carbon rounded text-white text-center'>2</div>
                     <div>
                         <p className='font-bold'>Download the template file in .xlsx format</p>
-                        <p>Download it if you haven't already prepared your data in the correct format.</p>
+                        <p>Download it if you haven&apos;t already prepared your data in the correct format.</p>
                     </div>
                 </div>
                 <div className='flex gap-4 items-center'>
                     <div className='h-6 w-6 bg-carbon rounded text-white text-center'>3</div>
                     <div>
-                        <p className='font-bold'>Click "Upload File"</p>
+                        <p className='font-bold'>Click &quot;Upload File&quot;</p>
                         <p>then select your prepared Excel spreadsheet with emission data.</p>
                     </div>
                 </div>

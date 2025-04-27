@@ -138,9 +138,12 @@ const ProductDetail = () => {
         if (emissionsError) throw emissionsError
         setEmissions(emissionsData || [])
         
-      } catch (error: any) {
-        console.error("Error fetching product details:", error)
-        setError(error.message)
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.error(error.message);
+        } else {
+          console.error(String(error));
+        }
       } finally {
         setLoading(false)
       }
@@ -204,7 +207,7 @@ const ProductDetail = () => {
         <div className='max-w-6xl mx-auto'>
           <div className='rounded-[4px] border-2 border-carbon px-2 sm:px-4 py-4 shadow-lg shadow-carbon'>
             <p className='mb-4 text-2xl font-bold'>Product Not Found</p>
-            <p className='text-center py-8'>This product doesn't exist or has been removed.</p>
+            <p className='text-center py-8'>This product doesn&apos;t exist or has been removed.</p>
             <div className='flex justify-center'>
               <Link 
                 href={`/company-dashboard/${companyAddress}`}

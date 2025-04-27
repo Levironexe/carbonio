@@ -106,9 +106,12 @@ const CompanyDetails = () => {
           
           setCategories(['all', ...uniqueCategories])
         }
-      } catch (error: any) {
-        console.error("Error fetching company details:", error)
-        setError(error.message)
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.error(error.message);
+        } else {
+          console.error(String(error));
+        }
       } finally {
         setLoading(false)
       }
@@ -202,7 +205,7 @@ const CompanyDetails = () => {
         <div className='max-w-6xl mx-auto'>
           <div className='rounded-[4px] border-2 border-carbon px-2 sm:px-4 py-4 shadow-lg shadow-carbon'>
             <p className='mb-4 text-2xl font-bold'>Company Not Found</p>
-            <p className='text-center py-8'>This company doesn't exist or has been removed.</p>
+            <p className='text-center py-8'>This company doesn&apos;t exist or has been removed.</p>
             <div className='flex justify-center'>
               <Link 
                 href="/company-dashboard"
@@ -392,7 +395,7 @@ const CompanyDetails = () => {
                 <path d="M20 7l-8-4-8 4m16 0v10l-8 4m0-10L4 7m8 4v10"></path>
               </svg>
               <p className='mt-4 text-xl font-medium text-gray-500'>No products found</p>
-              <p className='mt-2 text-gray-400'>This company hasn't added any products yet.</p>
+              <p className='mt-2 text-gray-400'>This company hasn&apos;t added any products yet.</p>
             </div>
           )}
 
