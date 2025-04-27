@@ -183,10 +183,10 @@ const CompanyDetails = () => {
             <p className='text-center py-8 text-red-500'>{error}</p>
             <div className='flex justify-center'>
               <Link 
-                href="/company-list"
+                href="/company-dashboard"
                 className="px-4 py-2 bg-purple-700 text-white rounded-[4px]"
               >
-                Back to Company List
+                Back to Company Dashboard
               </Link>
             </div>
           </div>
@@ -205,10 +205,10 @@ const CompanyDetails = () => {
             <p className='text-center py-8'>This company doesn't exist or has been removed.</p>
             <div className='flex justify-center'>
               <Link 
-                href="/company-list"
+                href="/company-dashboard"
                 className="px-4 py-2 bg-purple-700 text-white rounded-[4px]"
               >
-                Back to Company List
+                Back to Company Dashboard
               </Link>
             </div>
           </div>
@@ -321,8 +321,8 @@ const CompanyDetails = () => {
           </div>
           
           <div className='mt-4'>
-            <Link href="/company-list" className='text-purple-700 hover:underline'>
-              &larr; Back to Company List
+            <Link href="/company-dashboard" className='text-purple-700 hover:underline'>
+              &larr; Back to Company Dashboard
             </Link>
           </div>
         </div>
@@ -342,7 +342,7 @@ const CompanyDetails = () => {
                   <button
                     key={category}
                     onClick={() => handleCategoryChange(category)}
-                    className={`px-3 py-1 text-sm rounded-full ${
+                    className={`px-3 py-1 text-sm rounded ${
                       selectedCategory === category
                         ? 'bg-purple-700 text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -491,8 +491,8 @@ const CompanyDetails = () => {
                       </p>
                       
                       <Link 
-                        href={`/product/${product.id}`}
-                        className='text-purple-700 hover:text-purple-900 hover:underline text-sm font-medium'
+                          href={`/company-dashboard/${company.wallet_address}/${product.id}`}
+                          className='text-purple-700 hover:text-purple-900 hover:underline text-sm font-medium'
                       >
                         View Details &rarr;
                       </Link>

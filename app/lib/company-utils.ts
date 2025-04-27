@@ -31,7 +31,7 @@ export const useCompanyActions = () => {
         try {
             const data = await program.account.company.fetch(pda);
             const unixTimestamp = data.verificationTime.toNumber(); // i64 -> number
-            if (data.verificationStatus.toString() == "Unverified") {
+            if (data.verificationStatus.toString() == "Verified") {
                 let date = null;
                 if (unixTimestamp === "0"){
                     date = new Date(unixTimestamp * 1000); // Convert seconds to milliseconds 

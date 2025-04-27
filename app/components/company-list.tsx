@@ -262,7 +262,7 @@ const CompanyList = () => {
                           alt='verified indicator'
                         />
                       </Link>
-                      <Link target='_blank' href={`https://explorer.solana.com/address/${company.companyWalletAddr}`}>
+                      <Link target='_blank' href={`https://explorer.solana.com/address/${company.companyWalletAddr}?cluster=devnet`}>
                         <p className='text-lg font-normal ml-2 hover:underline hover:text-purple-700'>
                           <span className='text-purple-700 font-bold'>Account address:</span> {company.companyWalletAddr}
                         </p>
