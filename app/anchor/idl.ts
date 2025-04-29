@@ -152,14 +152,19 @@ export type CompanyRegistration = {
                 ]
               },
               {
-                "kind": "account",
-                "path": "signer"
+                "kind": "arg",
+                "path": "companyAddress"
               }
             ]
           }
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "companyAddress",
+          "type": "pubkey"
+        }
+      ]
     }
   ],
   "accounts": [

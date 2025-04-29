@@ -62,6 +62,14 @@ const ContactForm = () => {
     "Food & Beverage Producers",
   ]
 
+  const handleTestBtn = async () => {
+    if (publicKey){
+      await addProduct(publicKey?.toString())
+      const testData = await fetchCompanyData(publicKey?.toString())
+      console.log("testData", testData)
+    }
+  }
+
   // Check if the wallet address exists whenever it changes
   useEffect(() => {
     const checkWalletAddress = async () => {
@@ -311,6 +319,8 @@ const ContactForm = () => {
           )}
         </div>
       </div>
+      <button onClick={handleTestBtn}>Test</button>
+
     </div>
   )
 }
