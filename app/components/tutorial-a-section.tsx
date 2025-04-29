@@ -16,7 +16,7 @@ const TutorialA = () => {
                     <div className='h-6 w-6 bg-carbon rounded text-white text-center'>1</div>
                     <div>
                         <p className='font-bold '>Select a verified company in the <a target='_blank' href='/company-dashboard' className='hover:text-purple-700 underline'>Dashboard</a></p>
-                        <p>From the list or search bar to view their specific product's carbon data.</p>
+                        <p>From the list or search bar to view their specific product&apos;s carbon data.</p>
                     </div>
                 </div>
                 <div className='flex gap-4 items-center'>
@@ -30,7 +30,7 @@ const TutorialA = () => {
                     <div className='h-6 w-6 bg-carbon rounded text-white text-center'>3</div>
                     <div>
                         <p className='font-bold'>Filter valid/invalid data of the chosen company</p>
-                        <p>Some of the company's data may not be verified or audited by the third party.</p>
+                        <p>Some of the company&apos;s data may not be verified or audited by the third party.</p>
                     </div>
                 </div>
                 <div className='flex gap-4 items-center'>

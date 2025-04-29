@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { useState, useEffect } from "react"
 import { ArrowRight, CarTaxiFront } from "lucide-react"
@@ -61,6 +61,14 @@ const ContactForm = () => {
     "Logistics & Shipping Companies",
     "Food & Beverage Producers",
   ]
+
+  const handleTestBtn = async () => {
+    if (publicKey){
+      await addProduct(publicKey?.toString())
+      const testData = await fetchCompanyData(publicKey?.toString())
+      console.log("testData", testData)
+    }
+  }
 
   // Check if the wallet address exists whenever it changes
   useEffect(() => {
@@ -130,8 +138,8 @@ const ContactForm = () => {
     
     // Create company on the blockchain
     try {
-      // await createCompany(companyName);
-      await createCompany(walletAddress);
+      const result = await createCompany(companyName);
+      // const result = await fetchCompanyData("9kY5f5Zkhk5bNm5MajJNHqi6ZpDfNiEu9BMJ5dnpF69E");
     } catch (error) {
       console.error("Error creating company:", error);
       alert("Failed to create company on blockchain");
@@ -311,6 +319,8 @@ const ContactForm = () => {
           )}
         </div>
       </div>
+      <button onClick={handleTestBtn}>Test</button>
+
     </div>
   )
 }
