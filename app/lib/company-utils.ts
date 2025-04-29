@@ -25,7 +25,7 @@ export const useCompanyActions = () => {
             const data = await program.account.company.fetch(pda);
             const unixTimestamp = data.verificationTime.toNumber(); // i64 -> number
             let date = null;
-            if (unixTimestamp === "0"){
+            if (unixTimestamp !== "0"){
                 date = new Date(unixTimestamp * 1000); // Convert seconds to milliseconds 
                 date = date.toLocaleString();
             }else{
@@ -57,7 +57,7 @@ export const useCompanyActions = () => {
             .accounts({
                 signer: publicKey,
                 company: companyRegistrationPDA,
-                })
+            })
             .transaction();
 
             const transactionSignature = await sendTransaction(tx, connection);
