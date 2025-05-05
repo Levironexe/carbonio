@@ -51,7 +51,7 @@
       ],
       "args": [
         {
-          "name": "company_address",
+          "name": "_company_address",
           "type": "pubkey"
         }
       ]
@@ -146,14 +146,19 @@
                 ]
               },
               {
-                "kind": "account",
-                "path": "signer"
+                "kind": "arg",
+                "path": "company_address"
               }
             ]
           }
         }
       ],
-      "args": []
+      "args": [
+        {
+          "name": "_company_address",
+          "type": "pubkey"
+        }
+      ]
     }
   ],
   "accounts": [

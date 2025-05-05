@@ -1,30 +1,34 @@
 import { useMemo } from "react";
-import { AnchorWallet, useWallet, WalletContextState } from "@solana/wallet-adapter-react";
-import { Program, AnchorProvider, IdlAccounts, Wallet } from "@coral-xyz/anchor";
-import { clusterApiUrl, Connection, PublicKey,  } from "@solana/web3.js";
-import {CompanyRegistration } from "./idl";
+import { useAnchorWallet, useWallet, useConnection } from "@solana/wallet-adapter-react";
+import * as anchor from "@coral-xyz/anchor";
+import { Program, AnchorProvider, IdlAccounts } from "@coral-xyz/anchor";
+import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
+import type { CompanyRegistration } from "./idl";
+import idl from "./idl.json";
+
 import { Buffer } from "buffer";
-import IDL from "./idl.json";
-const typedIDL = IDL as CompanyRegistration;
 window.Buffer = window.Buffer || Buffer;
 
 export function useCompanyProgram(){
 
   const programId = new PublicKey("ACRzjs3gnGYhkRZaGaCjMdS8ybVsAHv4n4dQMzKLoYaf");
-  const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
-
-  const wallet = useWallet();
+  const { connection } = useConnection();
+  const wallet = useAnchorWallet();
 
   const provider = useMemo(() => {
     if (!wallet || !wallet.publicKey) return null;
-    return new AnchorProvider(connection, wallet as any, {
+    return new AnchorProvider(connection, wallet, {
       preflightCommitment: "confirmed",
     });
   }, [wallet]);
 
+  if (provider){
+    anchor.setProvider(provider);
+  }
+
   const program = useMemo(() => {
     if (!provider) return null;
-    return new Program<CompanyRegistration>(typedIDL, provider);
+    return new anchor.Program(idl as CompanyRegistration, {connection});
   }, [provider]);
 
   const companyRegistrationPDA = useMemo(() => {
@@ -36,7 +40,6 @@ export function useCompanyProgram(){
     return pda;
   }, [program]);
   
-
   return {
     program,
     provider,
@@ -44,4 +47,4 @@ export function useCompanyProgram(){
   }
 }
 
-export type CompanyRegistrationData = IdlAccounts<CompanyRegistration>["Company"];
+export type CompanyRegistrationData = IdlAccounts<CompanyRegistration>["company"];
