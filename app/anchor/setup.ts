@@ -17,7 +17,6 @@ export function useCompanyProgram(){
 
   const provider = useMemo(() => {
     if (!wallet || !wallet.publicKey) return null;
-    // @ts-ignore
     return new AnchorProvider(connection, wallet as any, {
       preflightCommitment: "confirmed",
     });
