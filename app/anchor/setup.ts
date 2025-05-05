@@ -16,7 +16,7 @@ export function useCompanyProgram(){
   const wallet = useWallet();
 
   const provider = useMemo(() => {
-    // @ts-ignore
+    // @ts-expect-error
     const walletAdapter = wallet as unknown as WalletContextState & { adapter: Wallet };
     const wallet = walletAdapter.adapter as unknown as Wallet;  
     if (!wallet || !wallet.publicKey) return null;
