@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import * as anchor from "@coral-xyz/anchor";
 import { SystemProgram, PublicKey } from "@solana/web3.js";
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
-import { CompanyRegistrationData, useCompanyProgram } from "../anchor/setup";
+import { useCompanyProgram } from "../anchor/setup";
 
 export const useCompanyActions = () => {
     const { connection } = useConnection();
@@ -20,21 +20,20 @@ export const useCompanyActions = () => {
             productsAmount: 0,
         }
         if (!program || !companyWalletAddr) return dataToReturnNull;
-        // if (!program || !companyWalletAddr) return null;
 
         const walletAddr = new PublicKey(companyWalletAddr);
 
         const [pda] = PublicKey.findProgramAddressSync(
-        [Buffer.from("company"), walletAddr.toBuffer()],
-        program.programId
+            [Buffer.from("company"), walletAddr.toBuffer()],
+            program.programId
         );
 
         try {
             const data = await program.account.company.fetch(pda);
             const unixTimestamp = data.verificationTime.toNumber(); // i64 -> number
-            if (data.verificationStatus.toString() == "Verified" || data.verificationStatus.toString() == "Unverified" ) {
+            if (data.verificationStatus.toString() == "Verified") {
                 let date = null;
-                if (unixTimestamp === "0"){
+                if (unixTimestamp !== 0){
                     date = new Date(unixTimestamp * 1000); // Convert seconds to milliseconds 
                     date = date.toLocaleString();
                 } else{
@@ -47,12 +46,10 @@ export const useCompanyActions = () => {
                     verificationTime: date,
                     productsAmount: data.productsAmount, 
                 }
-                // console.log("Company wallet:", data.companySigner.toBase58())
                 return dataToReturn;
             }
-            console.log(`company status ${data.verificationStatus}`);
-
-            return null;
+            console.log("Company wallet:", data.companySigner.toBase58())
+            return null
         } catch (error) {
             console.error("Error fetching data:", error);
         }
@@ -68,7 +65,6 @@ export const useCompanyActions = () => {
             )
             .accounts({
                 signer: publicKey,
-                company: companyRegistrationPDA,
                 })
             .transaction();
 
@@ -84,16 +80,23 @@ export const useCompanyActions = () => {
     }
 
     //Change status from Unverified to Verified
-    const verify = async () => {
+    const verify = async (companyWalletAddr:string) => {
         if (!program || !companyRegistrationPDA || !publicKey) return;  // Check if publicKey is valid
-        console.log("companyRegistrationPDA", companyRegistrationPDA.toBase58());
+
+        const walletAddr = new PublicKey(companyWalletAddr);
+
+        const [pda] = PublicKey.findProgramAddressSync(
+            [Buffer.from("company"), walletAddr.toBuffer()],
+            program.programId
+        );
+        
         try {
             const tx = await program.methods
-            .verify()
+            .verify(
+                new PublicKey(companyWalletAddr)
+            )
             .accounts({
                 signer: publicKey,
-                company: companyRegistrationPDA,
-                systemProgram: anchor.web3.SystemProgram.programId,
                 })
             .transaction();
 
@@ -109,16 +112,16 @@ export const useCompanyActions = () => {
     }
 
     //Increase product number by 1
-    const addProduct = async () => {
+    const addProduct = async (companyWalletAddr:string) => {
+        console.log("addProduct")
         if (!program || !companyRegistrationPDA || !publicKey) return;  // Check if publicKey is valid
         try {
             const tx = await program.methods
             .addProduct(
-                new PublicKey("DcGHAMZsM2P2ZsrVbY9f5gS64PYBS74xnjcUzWNJBSYk"),
+                new PublicKey(companyWalletAddr),
             )
             .accounts({
                 signer: publicKey,
-            company: companyRegistrationPDA,
                 })
             .transaction();
 
@@ -140,4 +143,3 @@ export const useCompanyActions = () => {
         addProduct,
     }
 }
-
