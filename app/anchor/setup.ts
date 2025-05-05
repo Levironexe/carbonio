@@ -7,6 +7,8 @@ import type { CompanyRegistration } from "./idl";
 import idl from "./idl.json";
 
 import { Buffer } from "buffer";
+import IDL from "./idl.json";
+const typedIDL = IDL as CompanyRegistration;
 if (typeof window !== 'undefined') {
   window.Buffer = window.Buffer || Buffer;
 }
