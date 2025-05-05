@@ -1,8 +1,7 @@
 import { useMemo } from "react";
 import { AnchorWallet, useWallet, WalletContextState } from "@solana/wallet-adapter-react";
-import * as anchor from "@coral-xyz/anchor";
-import { Program, AnchorProvider, IdlAccounts } from "@coral-xyz/anchor";
-import { clusterApiUrl, Connection, PublicKey } from "@solana/web3.js";
+import { Program, AnchorProvider, IdlAccounts, Wallet } from "@coral-xyz/anchor";
+import { clusterApiUrl, Connection, PublicKey,  } from "@solana/web3.js";
 import {CompanyRegistration } from "./idl";
 import { Buffer } from "buffer";
 import IDL from "./idl.json";
@@ -17,8 +16,12 @@ export function useCompanyProgram(){
   const wallet = useWallet();
 
   const provider = useMemo(() => {
+    // @ts-ignore
+    const walletAdapter = wallet as unknown as WalletContextState & { adapter: Wallet };
+    const wallet = walletAdapter.adapter as unknown as Wallet;  
     if (!wallet || !wallet.publicKey) return null;
-    return new AnchorProvider(connection, wallet as any, {
+
+    return new AnchorProvider(connection, wallet, {
       preflightCommitment: "confirmed",
     });
   }, [wallet]);
