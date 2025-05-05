@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from "react"
-import { ArrowRight, CarTaxiFront } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 import { useWallet } from '@solana/wallet-adapter-react'
 import { createClient } from "@supabase/supabase-js"
