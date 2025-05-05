@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import * as anchor from "@coral-xyz/anchor";
 import { SystemProgram, PublicKey } from "@solana/web3.js";
 import { useWallet, useConnection } from "@solana/wallet-adapter-react";
-import { useCompanyProgram } from "../anchor/setup";
+import { CompanyRegistrationData, useCompanyProgram } from "../anchor/setup";
 
 export const useCompanyActions = () => {
     const { connection } = useConnection();
@@ -20,6 +20,7 @@ export const useCompanyActions = () => {
             productsAmount: 0,
         }
         if (!program || !companyWalletAddr) return dataToReturnNull;
+        // if (!program || !companyWalletAddr) return null;
 
         const walletAddr = new PublicKey(companyWalletAddr);
 
@@ -31,7 +32,7 @@ export const useCompanyActions = () => {
         try {
             const data = await program.account.company.fetch(pda);
             const unixTimestamp = data.verificationTime.toNumber(); // i64 -> number
-            if (data.verificationStatus.toString() == "Verified") {
+            if (data.verificationStatus.toString() == "Verified" || data.verificationStatus.toString() == "Unverified" ) {
                 let date = null;
                 if (unixTimestamp === "0"){
                     date = new Date(unixTimestamp * 1000); // Convert seconds to milliseconds 
@@ -67,7 +68,6 @@ export const useCompanyActions = () => {
             )
             .accounts({
                 signer: publicKey,
-                // @ts-expect-error Anchor account type mismatch but works at runtime                
                 company: companyRegistrationPDA,
                 })
             .transaction();
@@ -92,8 +92,7 @@ export const useCompanyActions = () => {
             .verify()
             .accounts({
                 signer: publicKey,
-// @ts-expect-error Anchor account type mismatch but works at runtime
-company: companyRegistrationPDA,
+                company: companyRegistrationPDA,
                 systemProgram: anchor.web3.SystemProgram.programId,
                 })
             .transaction();
@@ -119,7 +118,6 @@ company: companyRegistrationPDA,
             )
             .accounts({
                 signer: publicKey,
-                // @ts-expect-error Anchor account type mismatch but works at runtime
             company: companyRegistrationPDA,
                 })
             .transaction();

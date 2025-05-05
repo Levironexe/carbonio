@@ -18,7 +18,7 @@ export function useCompanyProgram(){
 
   const provider = useMemo(() => {
     if (!wallet || !wallet.publicKey) return null;
-    return new AnchorProvider(connection, wallet as AnchorWallet, {
+    return new AnchorProvider(connection, wallet as any, {
       preflightCommitment: "confirmed",
     });
   }, [wallet]);
@@ -45,4 +45,4 @@ export function useCompanyProgram(){
   }
 }
 
-export type CompanyRegistrationData = IdlAccounts<CompanyRegistration>["company"];
+export type CompanyRegistrationData = IdlAccounts<CompanyRegistration>["Company"];

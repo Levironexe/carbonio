@@ -6,7 +6,6 @@ import Image from "next/image"
 import { useWallet } from '@solana/wallet-adapter-react'
 import { createClient } from "@supabase/supabase-js"
 import axios from "axios"
-import { stringify } from "querystring"
 import { useCompanyActions } from "../lib/company-utils"
 
 const supabase = createClient(

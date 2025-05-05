@@ -214,13 +214,13 @@ const CompanyList = () => {
                 </div>
                 <div className='text-center flex-[1] flex flex-col items-center justify-end gap-4  pb-12  border-2 border-carbon rounded px-2 sm:px-4 py-4'>
                 <p className=''>Total products:</p>
-                <p className='text-center text-5xl font-bold mt-4'>{totalProduct}</p>
+                <p className='text-center text-5xl font-bold mt-4'>11</p>
 
                    
                 </div>
                 <div className='text-center flex-[1] flex flex-col items-center justify-end gap-4  pb-12 border-2 border-carbon rounded px-2 sm:px-4 py-4'>
                 <p>Total stages:</p>
-                    <p className='text-center text-5xl font-bold mt-4'>{totalProduct}</p>
+                    <p className='text-center text-5xl font-bold mt-4'>55</p>
 
                 </div>  
                 <div className='flex-[2] flex gap-2 w-fit border-2 border-carbon rounded px-2 sm:px-4 py-4'>
