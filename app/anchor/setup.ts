@@ -16,12 +16,9 @@ export function useCompanyProgram(){
   const wallet = useWallet();
 
   const provider = useMemo(() => {
-    // @ts-expect-error
-    const walletAdapter = wallet as unknown as WalletContextState & { adapter: Wallet };
-    const wallet = walletAdapter.adapter as unknown as Wallet;  
     if (!wallet || !wallet.publicKey) return null;
-
-    return new AnchorProvider(connection, wallet, {
+    // @ts-ignore
+    return new AnchorProvider(connection, wallet as any, {
       preflightCommitment: "confirmed",
     });
   }, [wallet]);
