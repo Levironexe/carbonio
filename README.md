@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Carbonio - Carbon Footprint Tracking on Solana
 
-## Getting Started
+![Solana](https://img.shields.io/badge/Solana-1.98-blueviolet)
+![Next.js](https://img.shields.io/badge/Next.js-14.2-lightgrey)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue)
+![Express](https://img.shields.io/badge/Express-4.18-green)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.3-cyan)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-First, run the development server:
+Carbonio is a decentralized application designed to promote environmental sustainability by recording carbon emission data on the Solana blockchain. This transparent approach enables individuals to monitor their daily carbon footprint while incentivizing companies to reduce their atmospheric emissions. The platform leverages blockchain technology to create accountability and raise environmental awareness among users and organizations.
+
+## ✨ Features
+
+- **Decentralized Carbon Tracking**: Record and verify carbon emission data on Solana
+- **Smart Contract Security**: Immutable contracts ensure data integrity and transparency
+- **Web3 Integration**: Seamless connection with Solana wallets
+- **Modern UI/UX**: Built with Next.js and TypeScript for a responsive experience
+- **Real-time Updates**: Live tracking of carbon footprint data
+- **Multi-user Platform**: Supports consumers, companies, and verification auditors
+
+## 🌐 System Architecture
+![image](https://github.com/user-attachments/assets/d43f335b-0bb4-4c29-91cc-d3c0fbee5359)
+
+### Solana Integration
+
+- **Parallel Transaction Processing**: Concurrent processing of transactions allows high throughput
+- **Stateless Programs**: Smart contracts are immutable with state data stored separately
+- **Transaction Transparency**: All company data is visible and verifiable by all participants
+
+### Technical Stack
+
+- **Frontend**: Next.js with TypeScript
+- **Backend**: Express.js
+- **Blockchain**: Solana
+- **Smart Contracts**: Anchor framework
+- **Storage**: Pinata (IPFS) and Supabase
+- **NFT Creation**: Metaplex
+
+## 🖥️ Websites
+
+Carbonio offers three interconnected portals:
+
+1. **Public Dashboard**
+   - For consumers to scan QR codes and view carbon footprints
+   - For companies to register to the system
+
+2. **Company Portal**
+   - For businesses to register and submit carbon data
+
+3. **Admin Dashboard**
+   - For third-party auditors to verify products and companies
+
+## 🔄 System Flow
+
+1. **Company Registration**: Companies register their information through the dashboard
+2. **Data Uploading**: Product and carbon footprint data is uploaded to the portal
+3. **Blockchain Storage**: All data is stored on Solana (100% on-chain)
+4. **Verification Process**: Third-party auditors verify company claims
+5. **Consumer Access**: Consumers scan QR codes to view verified carbon footprint data
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+)
+- Solana CLI
+- Anchor Framework
+- Solana Wallet (Phantom recommended)
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/yourusername/carbonio.git
+
+# Install dependencies
+cd carbonio
+npm install
+
+# Set up environment variables
+cp .env.example .env.local
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Smart Contract Deployment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Build and deploy the Solana program
+anchor build
+anchor deploy
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔧 Configuration
 
-## Learn More
+Update your `.env.local` file with the following:
 
-To learn more about Next.js, take a look at the following resources:
+```
+NEXT_PUBLIC_SOLANA_NETWORK=devnet
+NEXT_PUBLIC_RPC_URL=your-rpc-url
+PINATA_API_KEY=your-pinata-key
+PINATA_SECRET_KEY=your-pinata-secret
+SUPABASE_URL=your-supabase-url
+SUPABASE_KEY=your-supabase-key
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Deploy on Vercel
+## 👥 Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+Built with 💚 for a sustainable future
