@@ -62,6 +62,10 @@ Carbonio offers three interconnected portals:
 
 ### Prerequisites
 
+✨ Visit [our live demo](https://carbonio.vercel.app) to see Carbonio in action! ✨
+
+### Prerequisites
+
 - Node.js (v18+)
 - Solana CLI
 - Anchor Framework
