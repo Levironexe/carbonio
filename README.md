@@ -40,12 +40,12 @@ Carbonio is a decentralized application designed to promote environmental sustai
 
 Carbonio offers three interconnected portals:
 
-1. **Public Dashboard**
+1. **[Public Dashboard](https://github.com/Levironexe/carbonio)**
    - For consumers to scan QR codes and view carbon footprints
    - For companies to register to the system
 
-2. **Company Portal**
-   - For businesses to register and submit carbon data
+2. **[User Portal](https://github.com/Levironexe/carbonioPartner)**
+   - For user to upload their carbon data with pre-formatted .xlsx file
 
 3. **Admin Dashboard**
    - For third-party auditors to verify products and companies
