@@ -196,7 +196,7 @@
           },
           {
             "name": "products_amount",
-            "type": "u32"
+            "type": "u32" 
           },
           {
             "name": "company_signer",
